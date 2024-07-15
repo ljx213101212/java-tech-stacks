@@ -12,6 +12,11 @@ public class SetterInjectionController {
 
     private Coach coach;
 
+    //Field Injection
+    @Autowired
+    private Coach baseballCoach;
+
+    //Setter Injection
     @Autowired
     public void setCoach(@Qualifier("trackCoach")Coach theCoach) {
         coach = theCoach;
@@ -20,5 +25,10 @@ public class SetterInjectionController {
     @GetMapping("/si/workout")
     public String getDailyWorkout() {
         return coach.getDailyWorkout();
+    }
+
+    @GetMapping("/fi/workout")
+    public String getBaseballWorkout() {
+        return baseballCoach.getDailyWorkout();
     }
 }
