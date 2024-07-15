@@ -1,5 +1,7 @@
 package com.ljx213101212.spring_boot_3_2024.Model;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
@@ -13,6 +15,18 @@ public class OnBenchGuy implements Coach {
 
     public OnBenchGuy() {
         System.out.println("In constructor: " + getClass().getSimpleName());
+    }
+
+    // Warning: This function won't be called because current bean scope is prototype
+    @PostConstruct
+    public void doMyStartupStuff() {
+        System.out.println("[OnBenchGuy] Now you are on bench, find something to fight for and improve yourself!");
+    }
+
+    // Warning: This function won't be called because current bean scope is prototype
+    @PreDestroy
+    public void doMyCleanupStuff() {
+        System.out.println("[OnBenchGuy] Congrats or Sorry to hear about this,  you are either assigned to new project or fired");
     }
 
     @Override
