@@ -5,25 +5,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.HashMap;
+import java.util.Map;
 
 @RestController
 public class SpringCoreController {
 
     // define a private field for the dependency
     private final Coach swimCoach;
+    private final Coach swimCoach2;
     private Coach trackCoach;
     //Field Injection
-
     @Autowired
     private Coach baseballCoach;
+
+    private Coach onBenchGuy1;
+    private Coach onBenchGuy2;
 
 
     // @Qualifier: make the class name first character as lower case.
     // @Autowired: allows fields to be final
     @Autowired
-    public SpringCoreController(@Qualifier("swimCoach") Coach theCoach) {
+    public SpringCoreController(@Qualifier("swimCoach") Coach theCoach,
+                                @Qualifier("swimCoach") Coach theCoach2,
+                                @Qualifier("onBenchGuy") Coach theBenchGuy,
+                                @Qualifier("onBenchGuy") Coach theBenchGuy2) {
         System.out.println("In constructor: " + getClass().getSimpleName());
         swimCoach = theCoach;
+        swimCoach2 = theCoach2;
+        onBenchGuy1 = theBenchGuy;
+        onBenchGuy2 = theBenchGuy2;
     }
 
 
@@ -51,4 +62,16 @@ public class SpringCoreController {
         return baseballCoach.getDailyWorkout();
     }
 
+    @GetMapping("/bean-scope")
+    public Object checkBeanScope() {
+        String scopeSingleton = "Comparing beans: swimCoach and swimCoach2: " + (swimCoach == swimCoach2);
+
+        String scopeProtoType = "Comparing beans: benchGuy and benchGuy2: " + (onBenchGuy1 == onBenchGuy2);
+
+        Map<String, String> map = new HashMap<>();
+        map.put("SingletonScope", scopeSingleton);
+        map.put("PrototypeScope", scopeProtoType);
+
+        return map;
+    }
 }
