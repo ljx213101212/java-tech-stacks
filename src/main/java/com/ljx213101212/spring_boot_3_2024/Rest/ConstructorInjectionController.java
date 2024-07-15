@@ -19,7 +19,7 @@ public class ConstructorInjectionController {
         myCoach = theCoach;
     }
 
-    @GetMapping("/dailyworkout")
+    @GetMapping("/ci/workout")
     public String getDailyWorkout() {
         return myCoach.getDailyWorkout();
     }
