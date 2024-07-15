@@ -18,10 +18,13 @@ public class SpringCoreController {
     //Field Injection
     @Autowired
     private Coach baseballCoach;
+    //Java config bean
+    @Autowired
+    @Qualifier("aquatic")
+    private Coach aquaticCoach;
 
     private Coach onBenchGuy1;
     private Coach onBenchGuy2;
-
 
     // @Qualifier: make the class name first character as lower case.
     // @Autowired: allows fields to be final
@@ -29,12 +32,14 @@ public class SpringCoreController {
     public SpringCoreController(@Qualifier("swimCoach") Coach theCoach,
                                 @Qualifier("swimCoach") Coach theCoach2,
                                 @Qualifier("onBenchGuy") Coach theBenchGuy,
-                                @Qualifier("onBenchGuy") Coach theBenchGuy2) {
+                                @Qualifier("onBenchGuy") Coach theBenchGuy2,
+                                @Qualifier("aquatic") Coach theAquaticCoach) {
         System.out.println("In constructor: " + getClass().getSimpleName());
         swimCoach = theCoach;
         swimCoach2 = theCoach2;
         onBenchGuy1 = theBenchGuy;
         onBenchGuy2 = theBenchGuy2;
+        aquaticCoach = theAquaticCoach;
     }
 
 
@@ -73,5 +78,10 @@ public class SpringCoreController {
         map.put("PrototypeScope", scopeProtoType);
 
         return map;
+    }
+
+    @GetMapping("java-bean-config")
+    public String checkBeanConfig() {
+        return aquaticCoach.getDailyWorkout();
     }
 }
