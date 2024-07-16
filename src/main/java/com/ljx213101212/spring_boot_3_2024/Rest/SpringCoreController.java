@@ -1,6 +1,6 @@
 package com.ljx213101212.spring_boot_3_2024.Rest;
 
-import com.ljx213101212.spring_boot_3_2024.Model.Coach;
+import com.ljx213101212.spring_boot_3_2024.Component.Coach;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
