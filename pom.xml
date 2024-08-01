@@ -90,6 +90,12 @@
 			<artifactId>hibernate-community-dialects</artifactId>
 		</dependency>
 
+		<!-- [Usage Sample of AWS CodeArtifact] -->
+<!--		<dependency>-->
+<!--			<groupId>com.ljx213101212</groupId>-->
+<!--			<artifactId>aws-hello-world</artifactId>-->
+<!--			<version>0.0.1-SNAPSHOT</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -101,4 +107,12 @@
 		</plugins>
 	</build>
 
+	<!-- [Sample Usage of AWS CodeArtifact] -->
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>epam-aws-code-artifact-hello-world</id>-->
+<!--			<name>code-artifact-hello-world</name>-->
+<!--			<url>https://epam-aws-058264280301.d.codeartifact.ap-southeast-1.amazonaws.com/maven/code-artifact-hello-world/</url>-->
+<!--		</repository>-->
+<!--	</repositories>-->
 </project>

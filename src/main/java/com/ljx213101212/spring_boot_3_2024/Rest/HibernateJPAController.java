@@ -1,10 +1,8 @@
 package com.ljx213101212.spring_boot_3_2024.Rest;
 
-import com.ljx213101212.spring_boot_3_2024.Dao.StudentDao;
 import com.ljx213101212.spring_boot_3_2024.Enitity.Student;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ljx213101212.spring_boot_3_2024.Service.StudentService;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,119 +10,90 @@ import java.util.List;
 public class HibernateJPAController {
     //CRUD Sample
 
-    private final StudentDao studentDao;
+    private final StudentService studentService;
 
-    HibernateJPAController(StudentDao theStudentDao) {
-        studentDao = theStudentDao;
+    HibernateJPAController(StudentService theStudentService) {
+        studentService = theStudentService;
     }
 
     //C
-    @GetMapping("jpa-create")
-    public void jpaCreate() {
+    //Note: For mapping name convention, don't use verb like: create / delete (use HTTP Method as a standard way to verify the nature of the API call)
+    @PostMapping("students")
+    public void jpaCreate(@RequestBody Student student) {
         // create the student object
-        System.out.println("Creating new student object ...");
-        Student tempStudent = new Student("Paul", "Doe", "paul@luv2code.com");
-
         // save the student object
         System.out.println("Saving the student ...");
-        studentDao.save(tempStudent);
+        studentService.save(student);
 
         // display id of the saved student
-        System.out.println("Saved student. Generated id: " + tempStudent.getId());
+        System.out.println("Saved student. Generated id: " + student.getId());
     }
 
-    @GetMapping("jpa-create-multiple")
-    public void jpaCreateMultiple() {
-        // create multiple students
-        System.out.println("Creating 3 student objects ...");
-        Student tempStudent1 = new Student("John", "Doe", "john@luv2code.com");
-        Student tempStudent2 = new Student("Mary", "Public", "mary@luv2code.com");
-        Student tempStudent3 = new Student("Bonita", "Applebum", "bonita@luv2code.com");
 
-        // save the student objects
-        System.out.println("Saving the students ...");
-        studentDao.save(tempStudent1);
-        studentDao.save(tempStudent2);
-        studentDao.save(tempStudent3);
+    @PostMapping("students/list")
+    public void jpaCreateMultiple(@RequestBody List<Student> students) {
+
+        for (Student student: students) {
+            // save the student objects
+            studentService.save(student);
+        }
     }
 
     //R
-    @GetMapping("jpa-read")
-    public void jpaRead() {
-        // create  a student object
-        System.out.println("Creating new student object ...");
-        Student tempStudent = new Student("Daffy", "Duck", "daffy@luv2code.com");
+    @GetMapping("students/{studentId}")
+    public Student jpaRead(@PathVariable int studentId) {
 
-        // save the student
-        System.out.println("Saving the student ...");
-        studentDao.save(tempStudent);
-
-        // display id of the saved student
-        int theId = tempStudent.getId();
-        System.out.println("Saved student. Generated id: " + theId);
-
-        // retrieve student based on the id: primary key
-        System.out.println("Retrieving student with id: " + theId);
-        Student myStudent = studentDao.findById(theId);
+        Student myStudent = studentService.findById(studentId);
 
         // display student
         System.out.println("Found the student: " + myStudent);
+        return myStudent;
     }
 
-    @GetMapping("jpa-read-all")
-    public void jpaReadAll() {
+    @GetMapping("students/all")
+    public List<Student> jpaReadAll() {
                 // get a list of students
-        List<Student> theStudents = studentDao.findAll();
+        List<Student> theStudents = studentService.findAll();
 
         // display list of students
         for (Student tempStudent : theStudents) {
             System.out.println(tempStudent);
         }
+
+        return theStudents;
     }
 
-    @GetMapping("jpa-read-by-name")
-    public void jpaReadByName() {
+    @GetMapping("students/lastname/{lastname}")
+    public List<Student> jpaReadByName(@PathVariable String lastname) {
         // get a list of students
-        List<Student> theStudents = studentDao.findByLastName("Doe");
+        List<Student> theStudents = studentService.findByLastName(lastname);
 
         // display list of students
         for (Student tempStudent : theStudents) {
             System.out.println(tempStudent);
         }
+        return theStudents;
     }
 
     //U
-    @GetMapping("jpa-update")
-    public void jpaUpdate() {
-        // retrieve student based on the id: primary key
-        int studentId = 1;
-        System.out.println("Getting student with id: " + studentId);
-        Student myStudent = studentDao.findById(studentId);
-
-        // change first name to "John"
-        System.out.println("Updating student ...");
-        myStudent.setFirstName("John");
-
+    @PutMapping("students")
+    public void jpaUpdate(@RequestBody Student student) {
         // update the student
-        studentDao.update(myStudent);
-
-        // display the updated student
-        System.out.println("Updated student: " + myStudent);
+        studentService.update(student);
     }
 
 
     //D
-    @GetMapping("jpa-delete")
-    public void jpaDelete() {
-        int studentId = 3;
+    @DeleteMapping("students/{studentId}")
+    public void jpaDelete(@PathVariable int studentId) {
         System.out.println("Deleting student id: " + studentId);
-        studentDao.delete(studentId);
+        studentService.deleteById(studentId);
     }
 
-    @GetMapping("jpa-delete-all")
+    @DeleteMapping("students/all")
     public void jpaDeleteAll() {
         System.out.println("Deleting all students");
-        int numRowsDeleted = studentDao.deleteAll();
+        int numRowsDeleted = studentService.deleteAll();
         System.out.println("Deleted row count: " + numRowsDeleted);
     }
 }
