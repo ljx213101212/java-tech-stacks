@@ -1,5 +1,25 @@
 # Kafka Streams
 
+## Quick Start
+
+### Task3
+```commandline
+kafka-topics.sh --create --topic task3-1 --bootstrap-server localhost:9092,localhost:9093
+kafka-topics.sh --create --topic task3-2 --bootstrap-server localhost:9092,localhost:9093
+
+./kafka-configs.sh  --bootstrap-server localhost:9092,localhost:9093 --entity-type topics --entity-name task3-1 --alter --add-config retention.ms=3600000
+./kafka-configs.sh  --bootstrap-server localhost:9092,localhost:9093 --entity-type topics --entity-name task3-2 --alter --add-config retention.ms=10000
+
+
+kafka-console-producer.sh --broker-list localhost:9092,localhost:9093 --topic task3-1 --property "parse.key=true" --property "key.separator=:"
+>> 1: today is
+>> 2: tomorrow will be
+kafka-console-producer.sh --broker-list localhost:9092,localhost:9093 --topic task3-2 --property "parse.key=true" --property "key.separator=:"
+>> 1: a good day
+>> 2: better
+
+```![img.png](img.png)
+
 ## Preparation
 
 - Make sure you have Java 8+ installed.

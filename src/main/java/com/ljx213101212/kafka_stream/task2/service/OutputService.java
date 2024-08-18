@@ -21,7 +21,13 @@ import java.util.Properties;
 public class OutputService {
 
     @Autowired
-    KafkaStreamsConfig config;
+    private KafkaStreamsConfig config;
+
+
+
+    public KafkaStreamsConfig getConfig() {
+        return config;
+    }
 
     public void performTask() {
         Properties props = new Properties();
