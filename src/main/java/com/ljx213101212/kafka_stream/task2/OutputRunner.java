@@ -1,6 +1,7 @@
 package com.ljx213101212.kafka_stream.task2;
 
 import com.ljx213101212.kafka_stream.task2.service.OutputService;
+import org.apache.kafka.streams.StreamsBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -25,6 +26,7 @@ public class OutputRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        myService.performTask();
+        StreamsBuilder builder = new StreamsBuilder();
+        myService.performTask(builder);
     }
 }

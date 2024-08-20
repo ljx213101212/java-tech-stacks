@@ -15,6 +15,8 @@ public class KafkaStreamsConfig {
     private String bootstrapServerConfig;
     @Value("${task2.kafka.stream.source-topic}")
     private String sourceTopic;
+    @Value("${task2.kafka.stream.output-topic}")
+    private String outputTopic;
 
 //    private String defaultKeySerdeClassConfig;
 //    private String defaultValueSerdeClassConfig;
