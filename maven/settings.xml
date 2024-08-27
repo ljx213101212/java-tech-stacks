@@ -19,7 +19,7 @@
 <!--            <repositories>-->
 <!--                <repository>-->
 <!--                    <id>epam-aws-code-artifact-hello-world</id>-->
-<!--                    <url>https://epam-aws-058264280301.d.codeartifact.ap-southeast-1.amazonaws.com/maven/code-artifact-hello-world/</url>-->
+<!--                    <url>${env.CODEARTIFACT_REPOSITORY_URL}</url>-->
 <!--                </repository>-->
 <!--            </repositories>-->
 <!--        </profile>-->

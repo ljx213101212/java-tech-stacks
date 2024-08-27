@@ -11,6 +11,8 @@
 	<groupId>com.ljx213101212</groupId>
 	<artifactId>spring-boot-3-2024</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<!--Aggregator Project-->
+	<!--<packaging>pom</packaging>-->
 	<name>spring-boot-3-2024</name>
 	<description>Demo project for learning Spring Boot</description>
 	<url/>
@@ -177,7 +179,7 @@
 <!--		<repository>-->
 <!--			<id>epam-aws-code-artifact-hello-world</id>-->
 <!--			<name>code-artifact-hello-world</name>-->
-<!--			<url>https://epam-aws-058264280301.d.codeartifact.ap-southeast-1.amazonaws.com/maven/code-artifact-hello-world/</url>-->
+<!--			<url>${env.CODEARTIFACT_REPOSITORY_URL}</url>-->
 <!--		</repository>-->
 <!--	</repositories>-->
 </project>
