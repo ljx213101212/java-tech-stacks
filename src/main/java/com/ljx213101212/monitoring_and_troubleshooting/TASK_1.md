@@ -51,6 +51,7 @@ Get pid using `jps` here and further through this document:
     jps -lvm
 ```
 jps -lvm | grep ljx213101212
+jps -lvm | grep ljx213101212 | awk '{print $1;}' | clip 
 
 28064 com.ljx213101212.HeapMain -Xmx100m -Dvisualvm.id=1647171737147600 -javaagent:C:\Apps\intellij\lib\idea_rt.jar=65461:C:\Apps\intellij\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8
 ```commandline
