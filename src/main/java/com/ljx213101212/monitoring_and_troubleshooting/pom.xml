@@ -19,5 +19,6 @@
     <modules>
         <module>deadlock</module>
         <module>heap</module>
+        <module>simple</module>
     </modules>
 </project>
