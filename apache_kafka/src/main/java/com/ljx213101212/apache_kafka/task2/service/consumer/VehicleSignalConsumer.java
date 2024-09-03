@@ -29,7 +29,7 @@ public class VehicleSignalConsumer {
 
     private final Map<String, VehicleRecord> vehicleDistanceMap = new ConcurrentHashMap<>();
 
-    @Transactional("transactionManager")
+    @Transactional("kafkaTransactionManager")
     @KafkaListener(topics = INPUT_TOPIC, groupId = DISTANCE_CAL_GROUP_ID)
     public void listen(VehicleSignal signal) throws InterruptedException {
         VehicleRecord record = calculateVehicleRecord(signal);

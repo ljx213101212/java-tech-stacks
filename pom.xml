@@ -185,7 +185,6 @@
 
 	<modules>
 		<module>advanced_multithreading</module>
-<!--		<module>heap</module>-->
-<!--		<module>simple</module>-->
+		<module>apache_kafka</module>
 	</modules>
 </project>

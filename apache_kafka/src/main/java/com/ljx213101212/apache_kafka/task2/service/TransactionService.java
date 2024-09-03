@@ -2,7 +2,9 @@ package com.ljx213101212.apache_kafka.task2.service;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Primary;
 import org.springframework.kafka.config.TopicBuilder;
+import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.transaction.KafkaTransactionManager;
 import org.springframework.stereotype.Service;
@@ -29,8 +31,9 @@ public class TransactionService {
                 .build();
     }
 
-//    @Bean
-//    public KafkaTransactionManager<Object, Object> kafkaTransactionManager(ProducerFactory<Object, Object> producerFactory) {
-//        return new KafkaTransactionManager<>(producerFactory);
-//    }
+    @Bean
+    @Primary
+    public KafkaTransactionManager<Object, Object> kafkaTransactionManager(ProducerFactory<Object, Object> producerFactory) {
+        return new KafkaTransactionManager<>(producerFactory);
+    }
 }
