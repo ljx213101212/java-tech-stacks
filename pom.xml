@@ -12,7 +12,7 @@
 	<artifactId>spring-boot-3-2024</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<!--Aggregator Project-->
-	<!--<packaging>pom</packaging>-->
+	<packaging>pom</packaging>
 	<name>spring-boot-3-2024</name>
 	<description>Demo project for learning Spring Boot</description>
 	<url/>
@@ -182,4 +182,10 @@
 <!--			<url>${env.CODEARTIFACT_REPOSITORY_URL}</url>-->
 <!--		</repository>-->
 <!--	</repositories>-->
+
+	<modules>
+		<module>advanced_multithreading</module>
+<!--		<module>heap</module>-->
+<!--		<module>simple</module>-->
+	</modules>
 </project>
