@@ -21,4 +21,123 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**/*.jpg</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>task2</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.ljx213101212.task2.ParallelMergeSortImpl</mainClass>
+                                </transformer>
+                            </transformers>
+                            <artifactSet/>
+                            <outputFile>${project.build.directory}/${project.artifactId}-task2.jar</outputFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>task3</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.ljx213101212.task3.FileScannerCLI</mainClass>
+                                </transformer>
+                            </transformers>
+                            <artifactSet/>
+                            <outputFile>${project.build.directory}/${project.artifactId}-task3.jar</outputFile>
+                        </configuration>
+
+                    </execution>
+
+                    <execution>
+                        <id>task4</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.ljx213101212.task4.EmployeeCLI</mainClass>
+                                </transformer>
+                            </transformers>
+                            <artifactSet/>
+                            <outputFile>${project.build.directory}/${project.artifactId}-task4.jar</outputFile>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>task5</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.ljx213101212.task5.ProducerConsumer</mainClass>
+                                </transformer>
+                            </transformers>
+                            <artifactSet/>
+                            <outputFile>${project.build.directory}/${project.artifactId}-task5.jar</outputFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>task6</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.ljx213101212.task6.SumOfSquares</mainClass>
+                                </transformer>
+                            </transformers>
+                            <artifactSet/>
+                            <outputFile>${project.build.directory}/${project.artifactId}-task6.jar</outputFile>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>task7</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>com.ljx213101212.task7.BlurMain</mainClass>
+                                </transformer>
+                            </transformers>
+                            <artifactSet/>
+                            <outputFile>${project.build.directory}/${project.artifactId}-task7.jar</outputFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

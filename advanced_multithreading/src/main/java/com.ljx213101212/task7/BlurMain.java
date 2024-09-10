@@ -8,7 +8,7 @@ public class BlurMain {
 
     public static void main(String[] args) {
 //        int[] source = createRandomArray(10_000_000);
-        BufferedImage inputImage = ImageUtil.loadImage("./flowerblue.jpg");
+        BufferedImage inputImage = ImageUtil.loadImage("flowerblue.jpg");
         int[] source = ImageUtil.imageToGrayscaleArray(inputImage);
         int width = inputImage.getWidth(); // Define width and height assuming it forms a valid rectangle
         int height = source.length / width;
