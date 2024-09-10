@@ -1,6 +1,9 @@
 ## Info
 Please check unit test
 
+> src/test/java/com/ljx213101212/kafka_stream/task2/OutputServiceTest.java
+> src/test/java/com/ljx213101212/kafka_stream/task4/Task4ApplicationTest.java
+
 ## Reference 
 ### Reading
 - https://www.confluent.io/blog/test-kafka-streams-with-topologytestdriver/

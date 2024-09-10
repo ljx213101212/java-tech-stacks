@@ -18,7 +18,8 @@ kafka-console-producer.sh --broker-list localhost:9092,localhost:9093 --topic ta
 >> 1: a good day
 >> 2: better
 
-```![img.png](img.png)
+```
+
 
 ## Preparation
 

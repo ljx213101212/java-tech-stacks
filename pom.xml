@@ -186,5 +186,6 @@
 	<modules>
 		<module>advanced_multithreading</module>
 		<module>apache_kafka</module>
+		<module>kafka_stream</module>
 	</modules>
 </project>
