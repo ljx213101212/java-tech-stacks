@@ -44,5 +44,6 @@
 		<module>kafka_stream</module>
 		<module>monitoring_and_troubleshooting</module>
 		<module>spring_boot</module>
+		<module>search_engines</module>
 	</modules>
 </project>
