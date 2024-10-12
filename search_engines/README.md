@@ -1,4 +1,15 @@
-### Solr
+### Elastic Search
+
+- run Elastic Search as local container (no UI)
+ - docker run -d --name es762 -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.6.2
+- run Elastic Search as local cluster (Elastic Search + Kibana(UI))
+ - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html
+
+
+
+
+
+### Solr (OutDated)
 
 #### Quick Start
 
@@ -108,3 +119,7 @@ http://localhost:8983/solr/#/bibdata/files?file=solrconfig.xml
 
 ### Reference
 https://github.com/hectorcorrea/solr-for-newbies/blob/main/tutorial.md
+https://github.com/spring-attic/spring-data-solr?tab=readme-ov-file
+https://www.baeldung.com/spring-data-elasticsearch-tutorial
+https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html
+

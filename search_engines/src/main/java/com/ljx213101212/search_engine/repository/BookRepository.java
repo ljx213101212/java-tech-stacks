@@ -1,10 +1,8 @@
 package com.ljx213101212.search_engine.repository;
 
-import nl.siegmann.epublib.domain.Book;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.data.solr.repository.SolrCrudRepository;
-import org.springframework.stereotype.Repository;
+import com.ljx213101212.search_engine.Model.Book;
+import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
 
-@Repository
-public interface BookRepository extends CrudRepository<Book, String> {
+
+public interface BookRepository extends ElasticsearchRepository<Book, String> {
 }
