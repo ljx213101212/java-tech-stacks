@@ -1,4 +1,4 @@
-package com.ljx213101212.search_engine.Config;
+package com.ljx213101212.search_engine.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.elasticsearch.client.ClientConfiguration;

@@ -1,8 +1,10 @@
-package com.ljx213101212.search_engine.Controller;
+package com.ljx213101212.search_engine.controller;
 
 //import com.ljx213101212.search_engine.Model.Book;
-import com.ljx213101212.search_engine.Model.Book;
-import com.ljx213101212.search_engine.Service.BookService;
+import com.ljx213101212.search_engine.model.Book;
+import com.ljx213101212.search_engine.model.dto.BookSearchRequest;
+import com.ljx213101212.search_engine.model.dto.BookSearchResponse;
+import com.ljx213101212.search_engine.service.BookService;
 //import com.ljx213101212.search_engine.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -11,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController

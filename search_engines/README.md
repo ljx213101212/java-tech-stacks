@@ -5,9 +5,48 @@
 - run Elastic Search as local cluster (Elastic Search + Kibana(UI))
  - https://www.elastic.co/guide/en/elasticsearch/reference/current/getting-started.html
 
+- Source 
+  - https://github.com/DwngLee/AnGi_BE/blob/7627736de9d546fcabaa4443ccde2b5a39316c07/src/main/java/com/personal/project/angi/service/impl/RestaurantServiceImpl.java#L220
+  - https://github.com/andreluiz1987/search-store/blob/main/src/main/java/com/company/searchstore/core/SearchCoreService.java#L50
 
-
-
+- Snippet (common queries backup)
+```
+GET /books/_search?pretty
+{
+  "query": {
+    "match": {
+      "title": "Harry Potter"
+    }
+  },
+  "aggs": {
+    "agg_title": {
+      "terms": {
+        "field": "title.keyword"
+      }
+    },
+    "agg_author": {
+      "terms": {
+        "field": "authors.keyword"
+      }
+    },
+     "agg_language": {
+      "adjacency_matrix": {
+        "filters": {
+          "english_titles": {
+            "term": {"language.keyword": "en"}
+          },
+          "harry_potter": {
+            "match": {"title": "Harry Potter"}
+          },
+          "jk_rowling": {
+            "term": {"authors.keyword": "J.K. Rowling"}
+          }
+        }
+      }
+    }
+  }
+}
+```
 
 ### Solr (OutDated)
 
