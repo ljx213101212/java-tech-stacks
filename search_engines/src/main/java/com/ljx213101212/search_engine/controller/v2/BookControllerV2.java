@@ -13,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/v2/books")
+@RequestMapping("api/v2/books")
 public class BookControllerV2 {
 
     @Autowired

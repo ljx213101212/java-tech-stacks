@@ -11,13 +11,12 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.io.IOException;
 
 @RestController
-@RequestMapping("/v3/books")
+@RequestMapping("api/v3/books")
 public class BookControllerV3 {
 
     @Autowired
@@ -42,12 +41,12 @@ public class BookControllerV3 {
         }
     }
 
-    @PostMapping("/suggest")
-    public ResponseEntity<BookSuggestResponse> suggestBooks(@RequestBody BookSearchRequest request) {
+    @GetMapping("/suggest")
+    public ResponseEntity<BookSuggestResponse> suggestBooks(@RequestParam("query") String query) throws IOException {
         try {
 
             // Use the service to process the search request
-            BookSuggestResponse searchResults = bookService.suggestBooks(request);
+            BookSuggestResponse searchResults = bookService.suggestBooks(query);
             return ResponseEntity.ok(searchResults);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)

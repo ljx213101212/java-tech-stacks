@@ -2,6 +2,7 @@ package com.ljx213101212.search_engine.service;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.aggregations.*;
+import co.elastic.clients.elasticsearch._types.query_dsl.Query;
 import co.elastic.clients.elasticsearch.core.*;
 import co.elastic.clients.elasticsearch.core.search.*;
 import co.elastic.clients.elasticsearch.indices.PutMappingRequest;
@@ -37,7 +38,7 @@ public class BookService {
         Book book = new Book();
 
 //        // Assign a unique ID, you might want to use a UID generator
-        book.setId(java.util.UUID.randomUUID().toString());
+        book.setId(UUID.randomUUID().toString());
 
         // Extract metadata
         Metadata metadata = epubBook.getMetadata();
@@ -55,7 +56,7 @@ public class BookService {
                 .collect(Collectors.toList()));
 
         // Set language
-        book.setLanguage(metadata.getLanguage().isEmpty() ? "en": metadata.getLanguage());
+        book.setLanguage(metadata.getLanguage().isEmpty() ? "en" : metadata.getLanguage());
 
         // Extract and set content
         StringWriter writer = new StringWriter();
@@ -96,7 +97,7 @@ public class BookService {
     }
 
     public Optional<Book> getBooksById(String id) {
-       return bookRepository.findById(id);
+        return bookRepository.findById(id);
     }
 
     //uses Elastic Search Client
@@ -174,18 +175,24 @@ public class BookService {
         }
     }
 
-    private Map<String, Aggregation> getAggregation() throws IOException {
+    private Map<String, Aggregation> getAggregation(String facetFeild) throws IOException {
         Map<String, Aggregation> map = new HashMap<>();
-        map.put(Aggregations.FACET_TITLE_NAME, new Aggregation.Builder()
-                .terms(new TermsAggregation.Builder().field(Aggregations.FACET_TITLE).size(25).build())
-                .build());
-        map.put(Aggregations.FACET_AUTHOR_NAME, new Aggregation.Builder()
-                .terms(new TermsAggregation.Builder().field(Aggregations.FACET_AUTHOR).size(25).build())
-                .build());
-        map.put(Aggregations.FACET_LANGUAGE_NAME, new Aggregation.Builder()
-                .terms(new TermsAggregation.Builder().field(Aggregations.FACET_LANGUAGE).size(10).build())
-                .build());
 
+        if (Objects.equals(facetFeild, Aggregations.FACET_TITLE_NAME)) {
+            map.put(Aggregations.FACET_TITLE_NAME, new Aggregation.Builder()
+                    .terms(new TermsAggregation.Builder().field(Aggregations.FACET_TITLE).size(25).build())
+                    .build());
+        }
+        if (Objects.equals(facetFeild, Aggregations.FACET_AUTHOR_NAME)) {
+            map.put(Aggregations.FACET_AUTHOR_NAME, new Aggregation.Builder()
+                    .terms(new TermsAggregation.Builder().field(Aggregations.FACET_AUTHOR).size(25).build())
+                    .build());
+        }
+        if (Objects.equals(facetFeild, Aggregations.FACET_LANGUAGE_NAME)) {
+            map.put(Aggregations.FACET_LANGUAGE_NAME, new Aggregation.Builder()
+                    .terms(new TermsAggregation.Builder().field(Aggregations.FACET_LANGUAGE).size(10).build())
+                    .build());
+        }
         return map;
     }
 
@@ -274,12 +281,21 @@ public class BookService {
 
     public BookSearchResponse searchBooks(BookSearchRequest request) throws IOException {
 
-        String term = "snow";
+        //1. filter the field
+        Query fieldQuery = Query.of(q -> q.term(t -> t.field(request.getField()).value(request.getValue())));;
+        //2. filter the content by request.getQ()
+        Query contentQuery = Query.of(q -> q.match(m -> m.field("content").query(request.getQ())));
+        //3. Overall Query
+        Query query = Query.of(q -> q.bool(b -> b
+                .must(fieldQuery) // Field filter
+                .filter(contentQuery) // Content filter
+        ));
+
         // Build the search request
         SearchRequest searchRequest = new SearchRequest.Builder()
                 .index("books")
-                .query(q-> q.match(t -> t.field("content").query(term)))
-                .aggregations(getAggregation())
+                .query(query)
+                .aggregations(getAggregation(request.getFacetField()))
                 .size(10) // You can adjust the size based on your needs
                 .build();
 
@@ -313,13 +329,12 @@ public class BookService {
         return bookSearchResponse;
     }
 
-    public BookSuggestResponse suggestBooks(BookSearchRequest request) throws IOException {
+    public BookSuggestResponse suggestBooks(String query) throws IOException {
 
-        String term = "harry";
         // Build the search request
         SearchRequest searchRequest = new SearchRequest.Builder()
                 .index("books_suggest")
-                .suggest(getSuggester(term))
+                .suggest(getSuggester(query))
                 .size(10) // You can adjust the size based on your needs
                 .build();
 
