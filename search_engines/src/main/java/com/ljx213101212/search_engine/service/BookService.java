@@ -2,17 +2,15 @@ package com.ljx213101212.search_engine.service;
 
 import co.elastic.clients.elasticsearch.ElasticsearchClient;
 import co.elastic.clients.elasticsearch._types.aggregations.*;
-import co.elastic.clients.elasticsearch.core.GetResponse;
-import co.elastic.clients.elasticsearch.core.IndexRequest;
-import co.elastic.clients.elasticsearch.core.SearchRequest;
-import co.elastic.clients.elasticsearch.core.SearchResponse;
-import co.elastic.clients.elasticsearch.core.search.Hit;
-import co.elastic.clients.json.JsonData;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import co.elastic.clients.elasticsearch.core.*;
+import co.elastic.clients.elasticsearch.core.search.*;
+import co.elastic.clients.elasticsearch.indices.PutMappingRequest;
 import com.ljx213101212.search_engine.config.Constants.Aggregations;
+import com.ljx213101212.search_engine.config.Constants.Suggest;
 import com.ljx213101212.search_engine.model.Book;
 import com.ljx213101212.search_engine.model.dto.BookSearchRequest;
 import com.ljx213101212.search_engine.model.dto.BookSearchResponse;
+import com.ljx213101212.search_engine.model.dto.BookSuggestResponse;
 import com.ljx213101212.search_engine.repository.BookRepository;
 import nl.siegmann.epublib.domain.Metadata;
 import nl.siegmann.epublib.epub.EpubReader;
@@ -76,6 +74,18 @@ public class BookService {
 
         return book;
     }
+
+    private String readJsonFile(String fileName) {
+        try (InputStream in = getClass().getClassLoader().getResourceAsStream(fileName)) {
+            if (in == null) {
+                throw new IllegalArgumentException("File not found: " + fileName);
+            }
+            return new String(in.readAllBytes(), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to read JSON file", e);
+        }
+    }
+
     public void indexBooks(File file) throws IOException {
         EpubReader epubReader = new EpubReader();
         nl.siegmann.epublib.domain.Book epubBook = epubReader.readEpub(new FileInputStream(file));
@@ -105,6 +115,65 @@ public class BookService {
         elasticsearchClient.index(request);
     }
 
+    public void indexBooks3(File file) throws IOException {
+        EpubReader epubReader = new EpubReader();
+        nl.siegmann.epublib.domain.Book epubBook = epubReader.readEpub(new FileInputStream(file));
+
+        Book book = transformByEpubBook(epubBook);
+
+        // Step 1: Load mapping from JSON file
+        String mappingJson = readJsonFile("CompleteSuggesterMapping.json");
+
+        // Step 2: Create index with mapping
+        // Check if the index exists
+        Boolean indexExists = elasticsearchClient.indices().exists(e -> e.index("books_suggest")).value();
+
+        if (indexExists) {
+            PutMappingRequest putMappingRequest = PutMappingRequest.of(
+                    m -> m.index("books_suggest").properties("title", prop -> prop
+                                    .text(t -> t)
+                            )
+                            .properties("authors", prop -> prop
+                                    .text(t -> t)
+                            )
+                            .properties("suggest", prop -> prop
+                                    .completion(cmp -> cmp)
+                            ));
+            elasticsearchClient.indices().putMapping(putMappingRequest);
+        } else {
+            // Create index with mapping
+            elasticsearchClient.indices().create(c -> c
+                    .index("books_suggest")
+                    .withJson(new StringReader(mappingJson))
+            );
+        }
+
+//        book.setSuggest(new Completion(List.of(book.getTitle(), String.join(", ", book.getAuthors()))));
+        BulkRequest.Builder br = new BulkRequest.Builder();
+        br.operations(op -> op
+                .index(idx -> idx
+                        .index("books_suggest")
+                        .id(book.getId())
+                        .document(Map.of(
+                                "title", book.getTitle(),
+                                "authors", String.join(", ", book.getAuthors()),
+                                "suggest", Map.of(
+                                        "input", List.of(book.getTitle(), String.join(", ", book.getAuthors()))
+                                )
+                        )))
+        );
+        BulkResponse bulkResponse = elasticsearchClient.bulk(br.build());
+        if (bulkResponse.errors()) {
+            bulkResponse.items().forEach(item -> {
+                if (item.error() != null) {
+                    System.out.println("Error: " + item.error().reason());
+                }
+            });
+        } else {
+            System.out.println("Document indexed successfully.");
+        }
+    }
+
     private Map<String, Aggregation> getAggregation() throws IOException {
         Map<String, Aggregation> map = new HashMap<>();
         map.put(Aggregations.FACET_TITLE_NAME, new Aggregation.Builder()
@@ -118,6 +187,15 @@ public class BookService {
                 .build());
 
         return map;
+    }
+
+    private Suggester getSuggester(String term) {
+
+        Suggester suggester = Suggester.of(sg -> sg
+                .suggesters(Suggest.SUGGEST_BOOK, new FieldSuggester.Builder().prefix(term)
+                        .completion(CompletionSuggester.of(c -> c.field("suggest").skipDuplicates(true)))
+                        .build()));
+        return suggester;
     }
 
     private List<BookSearchResponse.FacetDetails> mapAggregationsToFacetDetails(Map<String, Aggregate> aggregations) {
@@ -149,12 +227,58 @@ public class BookService {
 
         return facetDetailsList;
     }
+
+    private BookSuggestResponse mapToBookSuggestResponse(Map<String, List<Suggestion<Book>>> suggestionMap) {
+        List<Suggestion<Book>> bookSuggestList = suggestionMap.get("book_suggest");
+
+        if (bookSuggestList == null || bookSuggestList.isEmpty()) {
+            return new BookSuggestResponse();
+        }
+
+        // Iterate through all suggestions
+        List<BookSuggestResponse.SuggestionResponse> suggestionResponses = bookSuggestList.stream()
+                .map(suggestion -> {
+                    List<BookSuggestResponse.SuggestionOption> suggestionOptions = suggestion.completion().options().stream()
+                            .map(option -> {
+                                Book book = option.source();
+
+                                return new BookSuggestResponse.SuggestionOption(
+                                        option.text(),
+                                        option.index(),
+                                        option.id(),
+                                        option.score().floatValue(),
+                                        new BookSuggestResponse.BookSource(
+                                                book.getTitle(),
+                                                String.join(", ", book.getAuthors()),
+                                                new BookSuggestResponse.BookSource.Suggest(
+                                                        List.of(book.getTitle(), String.join(", ", book.getAuthors()))
+                                                )
+                                        )
+                                );
+                            })
+                            .collect(Collectors.toList());
+
+                    return new BookSuggestResponse.SuggestionResponse(
+                            suggestion.completion().text(),
+                            suggestion.completion().offset(),
+                            suggestion.completion().length(),
+                            suggestionOptions
+                    );
+                })
+                .collect(Collectors.toList());
+
+        BookSuggestResponse response = new BookSuggestResponse();
+        response.setBookSuggest(suggestionResponses);
+        return response;
+    }
+
     public BookSearchResponse searchBooks(BookSearchRequest request) throws IOException {
 
+        String term = "snow";
         // Build the search request
         SearchRequest searchRequest = new SearchRequest.Builder()
                 .index("books")
-                .query(q-> q.match(t -> t.field("content").query("snow")))
+                .query(q-> q.match(t -> t.field("content").query(term)))
                 .aggregations(getAggregation())
                 .size(10) // You can adjust the size based on your needs
                 .build();
@@ -187,5 +311,22 @@ public class BookService {
         bookSearchResponse.setNumFound(numFound);
 
         return bookSearchResponse;
+    }
+
+    public BookSuggestResponse suggestBooks(BookSearchRequest request) throws IOException {
+
+        String term = "harry";
+        // Build the search request
+        SearchRequest searchRequest = new SearchRequest.Builder()
+                .index("books_suggest")
+                .suggest(getSuggester(term))
+                .size(10) // You can adjust the size based on your needs
+                .build();
+
+        SearchResponse<Book> response = elasticsearchClient.search(searchRequest, Book.class);
+        Map<String, List<Suggestion<Book>>> suggestion = response.suggest();
+
+        BookSuggestResponse suggestResponse = mapToBookSuggestResponse(suggestion);
+        return suggestResponse;
     }
 }

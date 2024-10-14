@@ -1,18 +1,22 @@
 package com.ljx213101212.search_engine.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.CompletionField;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.core.suggest.Completion;
 
 import java.util.List;
 
 @Document(indexName = "books")
+@Builder
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
     @Id
@@ -29,4 +33,7 @@ public class Book {
 
     @Field(type = FieldType.Text)
     private String language;
+
+    @CompletionField(maxInputLength = 100)
+    private Completion suggest;
 }

@@ -48,6 +48,21 @@ GET /books/_search?pretty
 }
 ```
 
+````commandline
+POST /books_suggest/_search
+{
+  "suggest": {
+    "book-suggest": {
+      "prefix": "J",
+      "completion": {         
+          "field": "suggest",
+          "skip_duplicates": true
+      }
+    }
+  }
+}
+````
+
 ### Solr (OutDated)
 
 #### Quick Start
