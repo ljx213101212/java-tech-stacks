@@ -31,3 +31,9 @@ mvn package -pl monitoring_and_troubleshooting
 mvn package -DskipTests -pl spring_boot
 java -jar spring_boot/target/spring_boot_3_2024-0.0.1-SNAPSHOT.jar
 ```
+
+#### search_engines
+
+```commandline
+mvn package -pl search_engines
+```

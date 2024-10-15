@@ -27,5 +27,6 @@
 		<module>monitoring_and_troubleshooting</module>
 		<module>spring_boot</module>
 		<module>search_engines</module>
+		<module>search_engines_lucene</module>
 	</modules>
 </project>
