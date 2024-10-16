@@ -28,5 +28,6 @@
 		<module>spring_boot</module>
 		<module>search_engines</module>
 		<module>search_engines_lucene</module>
+		<module>search_engines_elasticsearch</module>
 	</modules>
 </project>

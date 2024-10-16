@@ -1,9 +1,5 @@
 ## Quick Start
 
-run 
-```commandline
-docker compose up
-```
 
 ## Config
 
