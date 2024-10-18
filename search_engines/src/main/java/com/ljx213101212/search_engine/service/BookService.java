@@ -44,7 +44,7 @@ public class BookService {
         Metadata metadata = epubBook.getMetadata();
 
         // Set title
-        if (!metadata.getTitles().isEmpty()) {
+        if (metadata.getTitles() != null && !metadata.getTitles().isEmpty()) {
             book.setTitle(metadata.getTitles().get(0));
         } else {
             book.setTitle("Unknown Title");

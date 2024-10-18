@@ -10,6 +10,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 import org.springframework.data.elasticsearch.core.suggest.Completion;
 
 import java.util.List;
+import java.util.Map;
 
 @Document(indexName = "books")
 @Builder
@@ -35,5 +36,6 @@ public class Book {
     private String language;
 
     @CompletionField(maxInputLength = 100)
-    private Completion suggest;
+    @Builder.Default
+    private Completion suggest = new Completion(List.of("sample book"));
 }
