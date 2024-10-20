@@ -1,0 +1,29 @@
+{
+  "size": 0,
+  "aggs": {
+    "verified_employees": {
+      "filter": {
+        "term": {
+          "verified": true
+        }
+      },
+      "aggs": {
+        "skills_agg": {
+          "terms": {
+            "field": "skills.keyword",
+            "order": {
+              "rating_stats.avg": "desc"
+            }
+          },
+          "aggs": {
+            "rating_stats": {
+              "stats": {
+                "field": "rating"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+    "aggregations": {
+        "verified_employees": {
+            "doc_count": 34,
+            "skills_agg": {
+                "doc_count_error_upper_bound": 0,
+                "sum_other_doc_count": 0,
+                "buckets": [
+                    {
+                        "key": "Docker",
+                        "doc_count": 1,
+                        "rating_stats": {
+                            "count": 1,
+                            "min": 8.5,
+                            "max": 8.5,
+                            "avg": 8.5,
+                            "sum": 8.5
+                        }
+                    },
+                    {
+                        "key": "Scala",
+                        "doc_count": 4,
+                        "rating_stats": {
+                            "count": 4,
+                            "min": 4.599999904632568,
+                            "max": 9.399999618530273,
+                            "avg": 6.999999761581421,
+                            "sum": 27.999999046325684
+                        }
+                    },
+                    {
+                        "key": "Python",
+                        "doc_count": 11,
+                        "rating_stats": {
+                            "count": 11,
+                            "min": 5.5,
+                            "max": 8.5,
+                            "avg": 6.790909073569558,
+                            "sum": 74.69999980926514
+                        }
+                    },
+                    {
+                        "key": "GCP",
+                        "doc_count": 14,
+                        "rating_stats": {
+                            "count": 14,
+                            "min": 3.0,
+                            "max": 9.300000190734863,
+                            "avg": 6.428571428571429,
+                            "sum": 90.0
+                        }
+                    },
+                    {
+                        "key": "Ruby",
+                        "doc_count": 10,
+                        "rating_stats": {
+                            "count": 10,
+                            "min": 3.0,
+                            "max": 9.300000190734863,
+                            "avg": 5.92000002861023,
+                            "sum": 59.200000286102295
+                        }
+                    },
+                    {
+                        "key": "AWS",
+                        "doc_count": 9,
+                        "rating_stats": {
+                            "count": 9,
+                            "min": 2.700000047683716,
+                            "max": 9.399999618530273,
+                            "avg": 5.888888782925076,
+                            "sum": 52.999999046325684
+                        }
+                    },
+                    {
+                        "key": "Javascript",
+                        "doc_count": 4,
+                        "rating_stats": {
+                            "count": 4,
+                            "min": 4.0,
+                            "max": 7.699999809265137,
+                            "avg": 5.849999904632568,
+                            "sum": 23.399999618530273
+                        }
+                    },
+                    {
+                        "key": "AZURE",
+                        "doc_count": 10,
+                        "rating_stats": {
+                            "count": 10,
+                            "min": 3.5,
+                            "max": 7.400000095367432,
+                            "avg": 5.539999961853027,
+                            "sum": 55.39999961853027
+                        }
+                    },
+                    {
+                        "key": "Java",
+                        "doc_count": 5,
+                        "rating_stats": {
+                            "count": 5,
+                            "min": 2.700000047683716,
+                            "max": 9.199999809265137,
+                            "avg": 4.3199999809265135,
+                            "sum": 21.59999990463257
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
