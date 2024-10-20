@@ -36,7 +36,14 @@
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-filter-aggregation.html
 - 2.3 avg-aggregations
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-avg-aggregation.html
--2.4 stats-aggregations
+- 2.4 stats-aggregations
   - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-metrics-stats-aggregation.html
   - terms-order
     - https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations-bucket-terms-aggregation.html#search-aggregations-bucket-terms-aggregation-order
+
+- 3.parent-join
+   - https://www.elastic.co/guide/en/elasticsearch/reference/current/parent-join.html
+     - has_child
+       - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-child-query.html
+     - has_parent
+       - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-parent-query.html
