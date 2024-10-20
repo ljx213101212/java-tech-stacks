@@ -1,0 +1,42 @@
+{
+    "took": 1,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 1,
+            "relation": "eq"
+        },
+        "max_score": 6.9818144,
+        "hits": [
+            {
+                "_index": "employees",
+                "_id": "cQ2BnpIB4VHkxorSwNZa",
+                "_score": 6.9818144,
+                "_source": {
+                    "name": "Ana Brown",
+                    "dob": "1993-03-19",
+                    "address": {
+                        "country": "Belarus",
+                        "town": "Gomel"
+                    },
+                    "email": "anabrown9@gmail.com",
+                    "skills": [
+                        "Java",
+                        "AWS"
+                    ],
+                    "experience": 10,
+                    "rating": 9.2,
+                    "description": "confident, ambitious, highly motivated Java experience interview learning python",
+                    "verified": true,
+                    "salary": 30000
+                }
+            }
+        ]
+    }
+}

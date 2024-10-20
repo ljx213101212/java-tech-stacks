@@ -1,0 +1,10 @@
+curl --location 'http://localhost:9200/employees/_search' \
+--header 'Authorization: ApiKey V3czdW5aSUI0VkhreG9yU1BOWjA6d0FoOGlEaHJTRGV6RHc5eUhlYjlOdw==' \
+--header 'Content-Type: application/json' \
+--data '{
+  "query": {
+    "match": {
+      "description": "motivated"
+    }
+  }
+}'

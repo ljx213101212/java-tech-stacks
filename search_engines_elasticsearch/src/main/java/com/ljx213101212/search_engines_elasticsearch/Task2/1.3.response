@@ -1,0 +1,249 @@
+{
+    "took": 12,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 14,
+            "relation": "eq"
+        },
+        "max_score": 3.387116,
+        "hits": [
+            {
+                "_index": "employees",
+                "_id": "cQ2BnpIB4VHkxorSwNZa",
+                "_score": 3.387116,
+                "_source": {
+                    "name": "Ana Brown",
+                    "dob": "1993-03-19",
+                    "address": {
+                        "country": "Belarus",
+                        "town": "Gomel"
+                    },
+                    "email": "anabrown9@gmail.com",
+                    "skills": [
+                        "Java",
+                        "AWS"
+                    ],
+                    "experience": 10,
+                    "rating": 9.2,
+                    "description": "confident, ambitious, highly motivated Java experience interview learning python",
+                    "verified": true,
+                    "salary": 30000
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "cg2YnpIB4VHkxorSldbF",
+                "_score": 3.0824928,
+                "_source": {
+                    "name": "John Doe",
+                    "dob": "1990-05-20",
+                    "address": {
+                        "country": "USA",
+                        "town": "New York"
+                    },
+                    "email": "johndoe@example.com",
+                    "skills": [
+                        "Python",
+                        "Docker"
+                    ],
+                    "experience": 7,
+                    "rating": 8.5,
+                    "description": "Experienced developer with a strong background in Python and containerization using Docker.",
+                    "verified": true,
+                    "salary": 45000
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "0g3wnJIB4VHkxorS5NWl",
+                "_score": 1.1585103,
+                "_source": {
+                    "name": "Carey Catlett",
+                    "dob": "1987-06-26",
+                    "address": {
+                        "country": "Liechtenstein",
+                        "town": "Thame"
+                    },
+                    "email": "carey.catlett@chat.com",
+                    "skills": [
+                        "Python",
+                        "AZURE"
+                    ],
+                    "experience": 2,
+                    "rating": 6.7,
+                    "description": "rss url write represents school videos motivated cycle instance rats reverse runs distance enhanced speeches",
+                    "verified": true,
+                    "salary": 50522
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "0w3wnJIB4VHkxorS5NWl",
+                "_score": 1.1585103,
+                "_source": {
+                    "name": "Marcus Speer",
+                    "dob": "1975-02-13",
+                    "address": {
+                        "country": "China",
+                        "town": "Birtley"
+                    },
+                    "email": "marcusspeer6@lender.omi.niigata.jp",
+                    "skills": [
+                        "Python",
+                        "AZURE"
+                    ],
+                    "experience": 4,
+                    "rating": 7.4,
+                    "description": "yearly discussion example politics rocky replacing insertion addressed replacing eve galaxy competitions pipes ceremony chips",
+                    "verified": true,
+                    "salary": 18660
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "1A3wnJIB4VHkxorS5NWl",
+                "_score": 1.1585103,
+                "_source": {
+                    "name": "Joeann Stine",
+                    "dob": "2002-09-13",
+                    "address": {
+                        "country": "Thailand",
+                        "town": "Prettlewell"
+                    },
+                    "email": "joeannstine338@gmail.com",
+                    "skills": [
+                        "Python",
+                        "GCP"
+                    ],
+                    "experience": 9,
+                    "rating": 7.4,
+                    "description": "ohio urgent consortium explained incentive elevation blow headers spending blackjack observe pieces quite municipal younger",
+                    "verified": true,
+                    "salary": 43539
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "1g3wnJIB4VHkxorS5NWl",
+                "_score": 1.1585103,
+                "_source": {
+                    "name": "Nicole Yeager",
+                    "dob": "1994-06-21",
+                    "address": {
+                        "country": "Dominica",
+                        "town": "Ponteland"
+                    },
+                    "email": "nicole_yeager@hotmail.com",
+                    "skills": [
+                        "Python",
+                        "AZURE"
+                    ],
+                    "experience": 2,
+                    "rating": 5.5,
+                    "description": "angle oh foul rs peripheral length specialties buys accessories jackson kenneth citizens creation marriott introduction",
+                    "verified": true,
+                    "salary": 12707
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "1w3wnJIB4VHkxorS5NWl",
+                "_score": 1.1585103,
+                "_source": {
+                    "name": "Melonie Donaldson",
+                    "dob": "1977-11-05",
+                    "address": {
+                        "country": "Argentina",
+                        "town": "Irvine"
+                    },
+                    "email": "melonie.donaldson28306@gmail.com",
+                    "skills": [
+                        "Python",
+                        "GCP"
+                    ],
+                    "experience": 6,
+                    "rating": 4.6,
+                    "description": "thomson continuity walker funding essays soup cargo win ringtones transmit copied vii evening examines showed",
+                    "verified": false,
+                    "salary": 46022
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "2Q3wnJIB4VHkxorS5NWl",
+                "_score": 1.1585103,
+                "_source": {
+                    "name": "Sammy Gulley",
+                    "dob": "1998-10-21",
+                    "address": {
+                        "country": "United Kingdom",
+                        "town": "Dundonald"
+                    },
+                    "email": "sammy61@reduced.com",
+                    "skills": [
+                        "Python",
+                        "AWS"
+                    ],
+                    "experience": 3,
+                    "rating": 6.1,
+                    "description": "brain promptly ic daughters icon twice invite juan restore describes nextel quit hundreds yr provided",
+                    "verified": true,
+                    "salary": 26100
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "Xw3wnZIB4VHkxorS9day",
+                "_score": 1.1585103,
+                "_source": {
+                    "name": "Carey Catlett",
+                    "dob": "1987-06-26",
+                    "address": {
+                        "country": "Liechtenstein",
+                        "town": "Thame"
+                    },
+                    "email": "carey.catlett@chat.com",
+                    "skills": [
+                        "Python",
+                        "AZURE"
+                    ],
+                    "experience": 2,
+                    "rating": 6.7,
+                    "description": "rss url write represents school videos motivated cycle instance rats reverse runs distance enhanced speeches",
+                    "verified": true,
+                    "salary": 50522
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "YA3wnZIB4VHkxorS9day",
+                "_score": 1.1585103,
+                "_source": {
+                    "name": "Marcus Speer",
+                    "dob": "1975-02-13",
+                    "address": {
+                        "country": "China",
+                        "town": "Birtley"
+                    },
+                    "email": "marcusspeer6@lender.omi.niigata.jp",
+                    "skills": [
+                        "Python",
+                        "AZURE"
+                    ],
+                    "experience": 4,
+                    "rating": 7.4,
+                    "description": "yearly discussion example politics rocky replacing insertion addressed replacing eve galaxy competitions pipes ceremony chips",
+                    "verified": true,
+                    "salary": 18660
+                }
+            }
+        ]
+    }
+}

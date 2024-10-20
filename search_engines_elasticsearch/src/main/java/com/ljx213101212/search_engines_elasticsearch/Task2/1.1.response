@@ -1,0 +1,88 @@
+{
+    "took": 11,
+    "timed_out": false,
+    "_shards": {
+        "total": 1,
+        "successful": 1,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": {
+            "value": 3,
+            "relation": "eq"
+        },
+        "max_score": 2.9865158,
+        "hits": [
+            {
+                "_index": "employees",
+                "_id": "cQ2BnpIB4VHkxorSwNZa",
+                "_score": 2.9865158,
+                "_source": {
+                    "name": "Ana Brown",
+                    "dob": "1993-03-19",
+                    "address": {
+                        "country": "Belarus",
+                        "town": "Gomel"
+                    },
+                    "email": "anabrown9@gmail.com",
+                    "skills": [
+                        "Java",
+                        "AWS"
+                    ],
+                    "experience": 10,
+                    "rating": 9.2,
+                    "description": "confident, ambitious, highly motivated Java experience interview learning python",
+                    "verified": true,
+                    "salary": 30000
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "0g3wnJIB4VHkxorS5NWl",
+                "_score": 2.4936528,
+                "_source": {
+                    "name": "Carey Catlett",
+                    "dob": "1987-06-26",
+                    "address": {
+                        "country": "Liechtenstein",
+                        "town": "Thame"
+                    },
+                    "email": "carey.catlett@chat.com",
+                    "skills": [
+                        "Python",
+                        "AZURE"
+                    ],
+                    "experience": 2,
+                    "rating": 6.7,
+                    "description": "rss url write represents school videos motivated cycle instance rats reverse runs distance enhanced speeches",
+                    "verified": true,
+                    "salary": 50522
+                }
+            },
+            {
+                "_index": "employees",
+                "_id": "Xw3wnZIB4VHkxorS9day",
+                "_score": 2.4936528,
+                "_source": {
+                    "name": "Carey Catlett",
+                    "dob": "1987-06-26",
+                    "address": {
+                        "country": "Liechtenstein",
+                        "town": "Thame"
+                    },
+                    "email": "carey.catlett@chat.com",
+                    "skills": [
+                        "Python",
+                        "AZURE"
+                    ],
+                    "experience": 2,
+                    "rating": 6.7,
+                    "description": "rss url write represents school videos motivated cycle instance rats reverse runs distance enhanced speeches",
+                    "verified": true,
+                    "salary": 50522
+                }
+            }
+        ]
+    }
+}

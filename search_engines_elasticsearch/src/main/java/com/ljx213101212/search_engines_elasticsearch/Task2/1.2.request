@@ -1,0 +1,10 @@
+{
+  "query": {
+    "match": {
+      "description": {
+        "query": "highly motivated",
+        "operator": "AND"
+      }
+    }
+  }
+}
