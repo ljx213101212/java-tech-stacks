@@ -1,3 +1,6 @@
+### HOMEWORK
+[HOMEWORK](HOMEWORK.md)
+
 ### Quick Start
 
 - common options
@@ -47,3 +50,12 @@
        - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-child-query.html
      - has_parent
        - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-parent-query.html
+
+### Task 3
+
+- Swagger 
+  - springfox (4 years ago) - Nope
+    - https://github.com/springfox/springfox
+  - springdoc-openapi - Yes
+    - https://github.com/springdoc/springdoc-openapi
+    - http://localhost:8080/swagger-ui/index.html
