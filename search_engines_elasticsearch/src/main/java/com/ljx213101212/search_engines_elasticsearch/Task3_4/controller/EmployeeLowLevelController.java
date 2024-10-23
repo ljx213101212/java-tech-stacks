@@ -1,7 +1,7 @@
-package com.ljx213101212.search_engines_elasticsearch.Task3.controller;
+package com.ljx213101212.search_engines_elasticsearch.Task3_4.controller;
 
-import com.ljx213101212.search_engines_elasticsearch.Task3.model.Employee;
-import com.ljx213101212.search_engines_elasticsearch.Task3.service.EmployeeLowLevelService;
+import com.ljx213101212.search_engines_elasticsearch.Task3_4.model.Employee;
+import com.ljx213101212.search_engines_elasticsearch.Task3_4.service.EmployeeLowLevelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

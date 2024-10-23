@@ -1,4 +1,4 @@
-package com.ljx213101212.search_engines_elasticsearch.Task3.config;
+package com.ljx213101212.search_engines_elasticsearch.Task3_4.config;
 
 
 import org.apache.http.HttpHost;

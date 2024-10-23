@@ -1,4 +1,4 @@
-package com.ljx213101212.search_engines_elasticsearch.Task3.exception;
+package com.ljx213101212.search_engines_elasticsearch.Task3_4.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

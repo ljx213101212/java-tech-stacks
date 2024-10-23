@@ -1,5 +1,6 @@
-package com.ljx213101212.search_engines_elasticsearch.Task3.model;
+package com.ljx213101212.search_engines_elasticsearch.Task3_4.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Employee {
 
     @Id

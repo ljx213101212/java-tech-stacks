@@ -1,8 +1,8 @@
-package com.ljx213101212.search_engines_elasticsearch.Task3.service;
+package com.ljx213101212.search_engines_elasticsearch.Task3_4.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ljx213101212.search_engines_elasticsearch.Task3.Util;
-import com.ljx213101212.search_engines_elasticsearch.Task3.model.Employee;
+import com.ljx213101212.search_engines_elasticsearch.Task3_4.Util;
+import com.ljx213101212.search_engines_elasticsearch.Task3_4.model.Employee;
 import org.elasticsearch.client.Request;
 import org.elasticsearch.client.Response;
 import org.elasticsearch.client.RestClient;

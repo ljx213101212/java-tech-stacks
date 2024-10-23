@@ -52,10 +52,23 @@
        - https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-has-parent-query.html
 
 ### Task 3
+- Java Low Level REST Client
+  - https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/java-rest-low-usage-requests.html
 
 - Swagger 
   - springfox (4 years ago) - Nope
     - https://github.com/springfox/springfox
-  - springdoc-openapi - Yes
+  - springdoc-openapi (recent) - Yes
     - https://github.com/springdoc/springdoc-openapi
     - http://localhost:8080/swagger-ui/index.html
+
+### Task 4
+
+- Java API Client
+  - ES | QL
+    - https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/esql.html
+      - Enable Metadata fields
+        - https://www.elastic.co/guide/en/elasticsearch/reference/current/esql-metadata-fields.html
+  - fluent DSL
+    - https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/indexing.html
+    - https://www.elastic.co/guide/en/elasticsearch/client/java-api-client/current/reading.html

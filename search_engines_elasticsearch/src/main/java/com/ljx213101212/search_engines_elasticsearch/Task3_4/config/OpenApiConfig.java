@@ -1,4 +1,4 @@
-package com.ljx213101212.search_engines_elasticsearch.Task3.config;
+package com.ljx213101212.search_engines_elasticsearch.Task3_4.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;

@@ -1,4 +1,4 @@
-package com.ljx213101212.search_engines_elasticsearch.Task3;
+package com.ljx213101212.search_engines_elasticsearch.Task3_4;
 
 import java.io.IOException;
 import java.io.InputStream;
