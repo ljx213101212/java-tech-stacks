@@ -1,0 +1,9 @@
+{
+  "aggs": {
+    "replace_agg_key": {
+      "stats": {
+        "field": "replace_field_name"
+      }
+    }
+  }
+}

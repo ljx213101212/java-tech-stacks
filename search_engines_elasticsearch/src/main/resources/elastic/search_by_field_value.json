@@ -1,0 +1,7 @@
+{
+  "query": {
+    "match": {
+      "replace_field": "replace_value"
+    }
+  }
+}
