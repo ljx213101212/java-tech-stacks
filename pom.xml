@@ -29,5 +29,6 @@
 		<module>search_engines</module>
 		<module>search_engines_lucene</module>
 		<module>search_engines_elasticsearch</module>
+		<module>datastructure_and_algorithm</module>
 	</modules>
 </project>
