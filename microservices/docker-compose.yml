@@ -1,0 +1,51 @@
+version: '3.8'
+
+networks:
+  microservice-network:
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    networks:
+      - microservice-network
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  micro-sender:
+    build: ./micro-sender
+    container_name: sender
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - microservice-network
+    ports:
+      - "8081:8080"
+    depends_on:
+      - rabbitmq
+
+  micro-recipient:
+    build: ./micro-recipient
+    container_name: recipient
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      -  microservice-network
+    ports:
+      - "8082:8080"
+    depends_on:
+      - rabbitmq
+
+  micro-collector:
+    build: ./micro-collector
+    container_name: collector
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - microservice-network
+    ports:
+      - "8083:8080"
+    depends_on:
+      - rabbitmq
+      - micro-recipient
