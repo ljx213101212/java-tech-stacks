@@ -49,3 +49,23 @@ services:
     depends_on:
       - rabbitmq
       - micro-recipient
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    networks:
+      - microservice-network
+    volumes:
+      - ./prometheus/docker/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    networks:
+      - microservice-network
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus

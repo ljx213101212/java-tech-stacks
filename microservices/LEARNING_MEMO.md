@@ -1,4 +1,6 @@
 ### RabbitMQ
+messaging and streaming broker
+
 - Acknowledgment Mechanisms in RabbitMQ
 
 ```commandline
@@ -9,3 +11,11 @@ Manual Acknowledgment (autoAck = false):
     Only after this acknowledgment will RabbitMQ delete the message from the queue. 
     If the consumer fails before sending the acknowledgment, RabbitMQ will requeue the message and redeliver it to another available consumer (or the same consumer, if it becomes available again).
 ```
+
+
+### Grafana
+a visualization tool that displays data from various sources in customizable dashboards.
+
+### Prometheus
+a monitoring system that collects metrics data, stores it, and can trigger alerts based on defined rules.
+

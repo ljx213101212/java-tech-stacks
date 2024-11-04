@@ -6,13 +6,14 @@
 - micro-visualizer:  "grafana" service to connect and visualize data from "prometheus"
 
 
+
 ### Quick Start (locally)
 1. Build all micro-services
 ```commandline
 cd microservices
 mvn clean package -DskipTests
 ```
-2.1 start docker (in Ubuntu WSL 2 [HOW](../HOW_TO_DOCKER.md)) 
+2.1 all in docker (in Ubuntu WSL 2 [HOW](../HOW_TO_DOCKER.md)) 
 ```commandline
 cd microservices
 docker compose -f docker-compose.yml up --build
@@ -23,7 +24,7 @@ make sure all 4 microservices are on
 - recipient
 - collector
 ```
-2.2 or you start docker only for rabbitmq
+2.2 start docker only for rabbitmq,prometheus, grafana
 ```commandline
 cd microservices
 docker compose -f docker-compose-local.yml up --build
@@ -31,12 +32,23 @@ docker ps
 make sure only rabbitmq is on
 ```
 
-n. Access RabbitMQ Management Console:
+3. Access RabbitMQ Management Console:
 ```commandline
 http://localhost:15672
 guest:guest
 
-docker exec -it 
+docker exec -it container-name bin/bash
+```
+
+4. Access prometheus Management Console:
+```commandline
+http://localhost:9090/targets
+```
+
+5. Access grafana console:
+
+```commandline
+http://localhost:3000/
 ```
 
 
