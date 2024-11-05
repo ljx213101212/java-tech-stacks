@@ -22,7 +22,7 @@ public class MessageController {
 
     @GetMapping("/message")
     public List<String> getMessages() {
-        List<String> messages = messageStorageService.getMessages();
+        List<String> messages = messageStorageService.getMessagesAndClear();
         logger.info("Returning and clearing messages: {}", messages);
         return messages;
     }

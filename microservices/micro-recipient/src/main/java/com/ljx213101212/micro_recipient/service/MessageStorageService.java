@@ -16,6 +16,10 @@ public class MessageStorageService {
     }
 
     public List<String> getMessages() {
+        return messages;
+    }
+
+    public List<String> getMessagesAndClear() {
         List<String> currentMessages = new ArrayList<>(messages);
         messages.clear(); // Clear messages after returning
         return currentMessages;
