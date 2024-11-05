@@ -15,7 +15,24 @@ Manual Acknowledgment (autoAck = false):
 
 ### Grafana
 a visualization tool that displays data from various sources in customizable dashboards.
-
+- https://grafana.com/docs/grafana-cloud/visualizations/dashboards/use-dashboards/
+- 
 ### Prometheus
 a monitoring system that collects metrics data, stores it, and can trigger alerts based on defined rules.
+##### Reference
+- https://prometheus.io/docs/prometheus/latest/querying/examples/
+
+### k8s
+a container orchestration system for automating software deployment, scaling and management.
+
+- kubectl
+  - command-line interface (CLI) tool used to interact with Kubernetes clusters.
+  - https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
+- minikube
+  - minikube is a tool that enables you to run a single-node Kubernetes cluster locally on your machine.
+  - https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+  - https://kubernetes.io/docs/tutorials/hello-minikube/
+  - https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
+  - Better to have a dashboard to support your understanding about k8s env
+    - https://minikube.sigs.k8s.io/docs/handbook/dashboard/
 
