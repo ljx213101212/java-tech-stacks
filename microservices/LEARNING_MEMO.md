@@ -24,7 +24,23 @@ Use this port for HTTP requests such as monitoring or managing queues, access th
 ### Grafana
 a visualization tool that displays data from various sources in customizable dashboards.
 - https://grafana.com/docs/grafana-cloud/visualizations/dashboards/use-dashboards/
-- 
+
+```commandline
+Bytes (IEC) vs. Bytes (SI) in Grafana
+Bytes (IEC):
+Uses binary prefixes (KiB, MiB, GiB), where:
+1 KiB = 1,024 bytes
+1 MiB = 1,024 KiB
+Appropriate for memory metrics reported by the JVM.
+Bytes (SI):
+Uses decimal prefixes (kB, MB, GB), where:
+1 kB = 1,000 bytes
+1 MB = 1,000 kB
+Typically used for network speeds or storage device capacities as marketed.
+Since the JVM reports memory metrics based on binary multiples, Bytes (IEC) is the correct unit to use when visualizing memory metrics from the Spring Boot Actuator in Grafana
+```
+
+
 ### Prometheus
 a monitoring system that collects metrics data, stores it, and can trigger alerts based on defined rules.
 ##### Reference

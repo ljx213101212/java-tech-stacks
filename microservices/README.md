@@ -12,18 +12,22 @@
 cd microservices
 mvn clean package -DskipTests
 ```
-2.1 start docker (in Ubuntu WSL 2 [HOW](../HOW_TO_DOCKER.md)) 
+2.1 Run container through docker-compose.yml (in Ubuntu WSL 2 [HOW](../HOW_TO_DOCKER.md)) 
 ```commandline
 cd microservices
 docker compose -f docker-compose.yml up --build
-docker ps
-make sure all microservices are on
+```
+2.2 Run container through docker directly
 
-- sender
-- recipient
-- collector
-- rabbitmq
--....
+```commandline
+docker container run -d -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+```
+
+2.3 Run container through k8s
+```commandline
+cd rabbit-mq
+kubectl apply -f deployment.yaml
+kubectl port-forward service/rabbitmq 5672:5672 15672:15672
 ```
 
 3. Access RabbitMQ Management Console:
@@ -54,7 +58,7 @@ http://localhost:3000/
   - [HOW](../HOW_TO_K8S_ON_WSL.md)
 
 ```commandline
-
+mvn clean package -DskipTests
 ```
 
 1. Publish microservice image to Docker Hub
@@ -75,6 +79,8 @@ docker push ljx213101212/micro-collector:latest
 docker build -t ljx213101212/micro-collector-k8s:latest -f ./micro-collector/Dockerfile-k8s ./micro-collector/.
 docker push ljx213101212/micro-collector-k8s:latest
 
+docker build -t ljx213101212/micro-visualizer-k8s:latest -f ./micro-visualizer/Dockerfile-k8s ./micro-visualizer/.
+docker push ljx213101212/micro-visualizer-k8s:latest
 ```
 > Delete all dangling images
 > docker rmi $(docker images --filter "dangling=true" -q --no-trunc)

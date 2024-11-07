@@ -16,3 +16,8 @@ scrape_configs:
     static_configs:
       - targets: ['micro-collector:8080']
     metrics_path: '/actuator/prometheus'
+
+  - job_name: 'micro-visualizer'
+    static_configs:
+      - targets: ['micro-visualizer:8080']
+    metrics_path: '/actuator/prometheus'
