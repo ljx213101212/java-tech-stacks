@@ -49,10 +49,10 @@ a monitoring system that collects metrics data, stores it, and can trigger alert
 ### k8s
 a container orchestration system for automating software deployment, scaling and management.
 
-- kubectl
+#### kubectl
   - command-line interface (CLI) tool used to interact with Kubernetes clusters.
   - https://kubernetes.io/docs/tasks/tools/install-kubectl-windows/
-- minikube
+#### minikube
   - minikube is a tool that enables you to run a single-node Kubernetes cluster locally on your machine.
   - https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download
   - https://kubernetes.io/docs/tutorials/hello-minikube/
@@ -60,7 +60,7 @@ a container orchestration system for automating software deployment, scaling and
   - Better to have a dashboard to support your understanding about k8s env
     - https://minikube.sigs.k8s.io/docs/handbook/dashboard/
 
-- 3 ways of accessing the pods
+#### 3 ways of accessing the pods
 - Method 1: use kubectl port-foward
 
 - https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
@@ -115,3 +115,11 @@ curl --location 'localhost:8080/api/notification' \
 Please be noted that 8080 is the port inside container as we configured in deployment.yaml (containerPort)
 ```
 
+
+
+#### Configure Istio for Traffic Splitting
+    - https://istio.io/latest/docs/concepts/traffic-management/
+
+```commandline
+   
+```

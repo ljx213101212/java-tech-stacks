@@ -84,6 +84,10 @@ docker push ljx213101212/micro-visualizer-k8s:latest
 ```
 > Delete all dangling images
 > docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+> 
+> Delete all dangling/not runining pods
+> kubectl get pods --all-namespaces --field-selector=status.phase!=Running -o json | kubectl delete -f -
+
 
 > tailing logs
 > kubectl logs -f --tail=10 micro-collector-667ddc4f55-6d7g2
@@ -121,3 +125,15 @@ kubectl exec -it micro-sender-75dfcfcd85-bd58t -- bash
 
 
 
+
+
+
+### A/B Testing
+
+please create three branches below
+for local jenkins to conduct the a/b testing
+```
+a_b_testing_v1
+a_b_testing_v2
+a_b_testing_v3
+```

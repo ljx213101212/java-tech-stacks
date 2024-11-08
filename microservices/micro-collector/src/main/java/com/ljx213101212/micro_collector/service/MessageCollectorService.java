@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MessageCollectorService {
@@ -28,10 +29,10 @@ public class MessageCollectorService {
     @Scheduled(fixedRateString = "${collector.scheduler.interval}")
     public void collectMessages() {
         try {
-            List<String> messages = recipientClient.getMessages();
-            if (messages != null && !messages.isEmpty()) {
-                logger.info("Collected messages from recipient: {}", messages);
-                messages.forEach(this::saveMessage);
+            String message = recipientClient.getMessage();
+            if (message != null) {
+                logger.info("Collected message from recipient: {}", message);
+                saveMessage(message);
             } else {
                 logger.info("No messages to collect at this time.");
             }
