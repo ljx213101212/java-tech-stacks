@@ -16,7 +16,7 @@ public final class Constants {
     public static final String FACET_LANGUAGE_NAME = "agg_language";
 
 
-    //Make sure no typos compares to model attributeslan
+    //Make sure no typos compares to com.ljx213101212.flyway.model attributeslan
     public static final String FACET_TITLE = "title.keyword";
     public static final String FACET_AUTHOR = "authors.keyword";
     public static final String FACET_LANGUAGE = "language.keyword";

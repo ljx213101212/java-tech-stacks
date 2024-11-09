@@ -20,10 +20,10 @@ Document should have the following fields:
   The process of indexing could be described as following:
 - Read all books from local folder
 - Use epubreader library (ex. com.positiondev.epublib) for transforming from File to EbubBook object
-- Then transform EpubBook to Book model which represent Solr document
+- Then transform EpubBook to Book com.ljx213101212.flyway.model which represent Solr document
 - Save Books to Solr
   Implement API endpoint to start indexing process
-  Using spring data solr implement repository to retrieving solr document by id
+  Using spring data solr implement com.ljx213101212.flyway.repository to retrieving solr document by id
   Implement API endpoint
 
 

@@ -14,11 +14,11 @@
 	</properties>
 	<!-- [Sample Usage of AWS CodeArtifact] -->
 <!--	<repositories>-->
-<!--		<repository>-->
+<!--		<com.ljx213101212.flyway.repository>-->
 <!--			<id>epam-aws-code-artifact-hello-world</id>-->
 <!--			<name>code-artifact-hello-world</name>-->
 <!--			<url>${env.CODEARTIFACT_REPOSITORY_URL}</url>-->
-<!--		</repository>-->
+<!--		</com.ljx213101212.flyway.repository>-->
 <!--	</repositories>-->
 	<modules>
 		<module>advanced_multithreading</module>
@@ -31,5 +31,6 @@
 		<module>search_engines_elasticsearch</module>
 		<module>datastructure_and_algorithm</module>
 		<module>microservices</module>
+		<module>database_migration_approaches_and_tools</module>
 	</modules>
 </project>
