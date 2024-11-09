@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+# Specifies that this resource is a Deployment.
+# A deployment is responsible for managing pods, including updates and scaling.
+kind: Deployment
+metadata:
+  name: micro-sender
+  labels:
+    app: micro-sender
+# specifications for the desired state of the deployment.
+spec:
+  #number of pod replicas
+  replicas: 1
+  selector:
+    # This deployment will manage pods that have the label
+    matchLabels:
+      app: micro-sender
+  template:
+    metadata:
+      labels:
+        app: micro-sender
+    spec:
+      containers:
+        - name: micro-sender
+          image: ljx213101212/micro-sender:latest
+          ports:
+            # The container will listen on port 8080.
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"
+            - name: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+              value: "prometheus,health,info"
+            - name: MANAGEMENT_ENDPOINT_PROMETHEUS_ENABLED
+              value: "true"
+            - name: MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS
+              value: "always"
+---
+#Kubernetes API version used for the service
+apiVersion: v1
+
+#Services are used to expose pods internally or externally.
+kind: Service
+metadata:
+  #the unique name of this service
+  name: micro-sender
+  labels:
+    # Labels assigned to the service for identification.
+    app: micro-sender
+spec:
+  ports:
+    # The service will expose port 8080.
+    - port: 8080
+  # Specifies which pods the service will target. Pods with the label app: micro-sender will be included in this service.
+  selector:
+    app: micro-sender

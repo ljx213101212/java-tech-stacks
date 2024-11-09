@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-recipient
+  labels:
+    app: micro-recipient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-recipient
+  template:
+    metadata:
+      labels:
+        app: micro-recipient
+    spec:
+      containers:
+        - name: micro-recipient
+          image: ljx213101212/micro-recipient:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "docker"
+            - name: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+              value: "prometheus,health,info"
+            - name: MANAGEMENT_ENDPOINT_PROMETHEUS_ENABLED
+              value: "true"
+            - name: MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS
+              value: "always"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-recipient
+  labels:
+    app: micro-recipient
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: micro-recipient

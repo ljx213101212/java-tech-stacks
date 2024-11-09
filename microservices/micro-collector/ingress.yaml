@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: micro-collector-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/canary: "true"  # Optional, for canary deployment
+    kubernetes.io/ingress.class: nginx  # Specify the ingress class
+spec:
+  rules:
+    #minikube addons enable ingress "minikube addons enable ingress"
+    - host: 192.168.49.2  # Use the assigned Minikube IP address , run " minikube ip" to check
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: micro-collector
+                port:
+                  number: 8080
+  # Uncomment below if you want to use TLS
+  # tls:
+  # - hosts:
+  #   - host: 192.168.49.2  # Use the assigned Minikube IP address , run " minikube ip" to check
+  #   secretName: micro-collector-tls
+
+
+  # Check the ingress status
+  # kubectl describe ingress micro-collector-ingress

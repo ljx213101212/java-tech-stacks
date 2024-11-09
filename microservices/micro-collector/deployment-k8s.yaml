@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-collector
+  labels:
+    app: micro-collector
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: micro-collector
+  template:
+    metadata:
+      labels:
+        app: micro-collector
+    spec:
+      containers:
+        - name: micro-collector
+          image: ljx213101212/micro-collector-k8s:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: "k8s"
+            - name: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+              value: "prometheus,health,info"
+            - name: MANAGEMENT_ENDPOINT_PROMETHEUS_ENABLED
+              value: "true"
+            - name: MANAGEMENT_ENDPOINT_HEALTH_SHOW_DETAILS
+              value: "always"
+            - name: SPRING_DATASOURCE_URL
+              value: "jdbc:postgresql://postgres:5432/microservices_db"
+            - name: SPRING_DATASOURCE_USERNAME
+              value: "admin"
+            - name: SPRING_DATASOURCE_PASSWORD
+              value: "password"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-collector
+  labels:
+    app: micro-collector
+spec:
+  ports:
+    - port: 8080
+  selector:
+    app: micro-collector
