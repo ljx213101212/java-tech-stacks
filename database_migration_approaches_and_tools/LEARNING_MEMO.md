@@ -46,3 +46,62 @@ spring.flyway.target=4
 flyway clean
  flyway migrate -target=4
 ````
+
+
+
+### Liquibase
+
+
+##### Run liquibase command or Simply start the spring boot
+
+```commandline
+liquibase --url=jdbc:mysql://localhost:6603/db_migration_demo \
+          --username=user --password=password \
+          --changeLogFile=src/main/resources/db/changelog/db.changelog-master.yaml \
+          --driver=com.mysql.cj.jdbc.Driver \
+          --classpath=/path/to/mysql-connector-java-8.x.x.jar \
+          --log-level=info \
+          [Your command]
+```
+
+````commandline
+liquibase --url=jdbc:mysql://localhost:6603/db_migration_demo --username=user --password=password --changeLogFile=src/main/resources/db/changelog/db.changelog-master.yaml --driver=com.mysql.cj.jdbc.Driver --classpath=/mnt/c/Work/elearning/java-tech-stacks/database_migration_approaches_and_tools/mysql-connector-java-8.0.29.jar --log-level=info update
+
+(don't do this in production)
+liquibase --url=jdbc:mysql://localhost:6603/db_migration_demo --username=user --password=password --changeLogFile=src/main/resources/db/changelog/db.changelog-master.yaml --driver=com.mysql.cj.jdbc.Driver --classpath=/mnt/c/Work/elearning/java-tech-stacks/database_migration_approaches_and_tools/mysql-connector-java-8.0.29.jar --log-level=info drop-all
+````
+
+
+##### Rollback
+
+- rollback by 1 changeset
+````commandline
+liquibase --url=jdbc:mysql://localhost:6603/db_migration_demo --username=user --password=password --changeLogFile=src/main/resources/db/changelog/db.changelog-master.yaml rollbackCount 1
+````
+
+- tagging and rollback to certain tag
+```commandline
+
+         
+liquibase --url=jdbc:mysql://localhost:6603/db_migration_demo \
+          --username=user --password=password \
+          --changeLogFile=src/main/resources/db/changelog/db.changelog-master.yaml \
+          --log-level=info \
+          --driver=com.mysql.cj.jdbc.Driver \
+          --classpath=/mnt/c/Work/elearning/java-tech-stacks/database_migration_approaches_and_tools/mysql-connector-java-8.0.29.jar:/mnt/c/Work/elearning/java-tech-stacks/database_migration_approaches_and_tools/liquibase/src/main/resources \
+          tag V2
+          
+          
+liquibase rollback V2
+```
+
+##### liquibase.properties
+- add this file liquibase.properties, so you don't have to mention the param each time
+```.properties
+url=jdbc:mysql://localhost:6603/db_migration_demo
+username=user
+password=password
+driver=com.mysql.cj.jdbc.Driver
+classpath=/mnt/c/Work/elearning/java-tech-stacks/database_migration_approaches_and_tools/mysql-connector-java-8.0.29.jar:/mnt/c/Work/elearning/java-tech-stacks/database_migration_approaches_and_tools/liquibase/src/main/resources
+changeLogFile=liquibase/src/main/resources/db/changelog/db.changelog-master.yaml
+```

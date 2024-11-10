@@ -1,0 +1,132 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: "jixiang_li"
+      changes:
+        - insert:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "company_name"
+                  value: "TechCorp"
+              - column:
+                  name: "country_code"
+                  value: "US"
+        - insert:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "company_name"
+                  value: "Innovatech"
+              - column:
+                  name: "country_code"
+                  value: "SG"
+        - insert:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "company_name"
+                  value: "FutureWorks"
+              - column:
+                  name: "country_code"
+                  value: "DE"
+        - insert:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "company_name"
+                  value: "SkyNet"
+              - column:
+                  name: "country_code"
+                  value: "AU"
+      rollback:
+        - delete:
+            tableName: "company"
+            where: "company_name = 'TechCorp' AND country_code = 'US'"
+        - delete:
+            tableName: "company"
+            where: "company_name = 'Innovatech' AND country_code = 'SG'"
+        - delete:
+            tableName: "company"
+            where: "company_name = 'FutureWorks' AND country_code = 'DE'"
+        - delete:
+            tableName: "company"
+            where: "company_name = 'SkyNet' AND country_code = 'AU'"
+
+  - changeSet:
+      id: "2"
+      author: "jixiang_li"
+      changes:
+        - insert:
+            tableName: "employee"
+            columns:
+              - column:
+                  name: "employee_id"
+                  value: "EMP001"
+              - column:
+                  name: "email"
+                  value: "john.doe@techcorp.com"
+              - column:
+                  name: "first_name"
+                  value: "John"
+              - column:
+                  name: "last_name"
+                  value: "Doe"
+        - insert:
+            tableName: "employee"
+            columns:
+              - column:
+                  name: "employee_id"
+                  value: "EMP002"
+              - column:
+                  name: "email"
+                  value: "jane.smith@innovatech.sg"
+              - column:
+                  name: "first_name"
+                  value: "Jane"
+              - column:
+                  name: "last_name"
+                  value: "Smith"
+        - insert:
+            tableName: "employee"
+            columns:
+              - column:
+                  name: "employee_id"
+                  value: "EMP003"
+              - column:
+                  name: "email"
+                  value: "mike.johnson@futureworks.de"
+              - column:
+                  name: "first_name"
+                  value: "Mike"
+              - column:
+                  name: "last_name"
+                  value: "Johnson"
+        - insert:
+            tableName: "employee"
+            columns:
+              - column:
+                  name: "employee_id"
+                  value: "EMP004"
+              - column:
+                  name: "email"
+                  value: "emma.watson@skynet.au"
+              - column:
+                  name: "first_name"
+                  value: "Emma"
+              - column:
+                  name: "last_name"
+                  value: "Watson"
+      rollback:
+        - delete:
+            tableName: "employee"
+            where: "employee_id = 'EMP001'"
+        - delete:
+            tableName: "employee"
+            where: "employee_id = 'EMP002'"
+        - delete:
+            tableName: "employee"
+            where: "employee_id = 'EMP003'"
+        - delete:
+            tableName: "employee"
+            where: "employee_id = 'EMP004'"

@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: "jixiang_li"
+      changes:
+        - dropColumn:
+            tableName: "company"
+            columnName: "country_code"
+      rollback:
+        - addColumn:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "country_code"
+                  type: "VARCHAR(255)"
+                  constraints:
+                    nullable: true
+
+  - changeSet:
+      id: "2"
+      author: "jixiang_li"
+      changes:
+        - dropTable:
+            tableName: "country"
+      rollback:
+        - createTable:
+            tableName: "country"
+            columns:
+              - column:
+                  name: "id"
+                  type: "BIGINT"
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: "country_code"
+                  type: "VARCHAR(255)"
+                  constraints:
+                    nullable: false
+                    unique: true
