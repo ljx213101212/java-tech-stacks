@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: non-durable-subscriber-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: non-durable-subscriber
+  template:
+    metadata:
+      labels:
+        app: non-durable-subscriber
+    spec:
+      containers:
+        - name: non-durable-subscriber
+          image: non-durable-subscriber-app
+          env:
+            - name: BROKER_URL
+              value: "tcp://activemq-service:61616"
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          imagePullPolicy: IfNotPresent
