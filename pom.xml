@@ -32,5 +32,6 @@
 		<module>datastructure_and_algorithm</module>
 		<module>microservices</module>
 		<module>database_migration_approaches_and_tools</module>
+		<module>messaging_in_java</module>
 	</modules>
 </project>
