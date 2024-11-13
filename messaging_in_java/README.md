@@ -23,6 +23,7 @@ On Unix/Linux/Mac: ./activemq start
 ```commandline
 minikube start
 
+eval $(minikube docker-env)  (expose minukube docker env to current terminal)
 minikube tunnel (expose LoadBalancer or NodePort service ip outside k8s cluster)
 ```
 

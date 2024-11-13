@@ -40,6 +40,8 @@
                             <mainClass>com.ljx213101212.messaging_in_java.task1.Publisher</mainClass>
                             <mainClass>com.ljx213101212.messaging_in_java.task1.DurableSubscriber</mainClass>
                             <mainClass>com.ljx213101212.messaging_in_java.task1.NonDurableSubscriber</mainClass>
+                            <mainClass>com.ljx213101212.messaging_in_java.task2.Replier</mainClass>
+                            <mainClass>com.ljx213101212.messaging_in_java.task2.Requester</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
