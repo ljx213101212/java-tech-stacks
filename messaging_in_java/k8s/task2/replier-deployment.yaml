@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: replier-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: replier
+  template:
+    metadata:
+      labels:
+        app: replier
+    spec:
+      containers:
+        - name: replier
+          image: replier-app
+          imagePullPolicy: Never #use local image
