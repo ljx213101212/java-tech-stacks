@@ -1,0 +1,10 @@
+FROM eclipse-temurin:22-jdk
+WORKDIR /app
+
+# Make sure you did "mvn dependency:copy-dependencies package -DskipTests" before run docker build
+COPY target/messaging_in_java-0.0.1-SNAPSHOT.jar /app
+COPY target/dependency/* /app/libs/
+
+# defined in activemq-deployment.yaml
+ENV BROKER_URL=tcp://activemq-service:61616
+CMD ["java", "-cp", "/app/messaging_in_java-0.0.1-SNAPSHOT.jar:/app/libs/*", "com.ljx213101212.messaging_in_java.task3.VirtualTopicPublisher"]

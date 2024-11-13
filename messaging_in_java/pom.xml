@@ -42,6 +42,8 @@
                             <mainClass>com.ljx213101212.messaging_in_java.task1.NonDurableSubscriber</mainClass>
                             <mainClass>com.ljx213101212.messaging_in_java.task2.Replier</mainClass>
                             <mainClass>com.ljx213101212.messaging_in_java.task2.Requester</mainClass>
+                            <mainClass>com.ljx213101212.messaging_in_java.task3.VirtualTopicPublisher</mainClass>
+                            <mainClass>com.ljx213101212.messaging_in_java.task3.VirtualTopicSubscriber</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

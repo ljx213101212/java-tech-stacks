@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: virtual-topic-subscriber-statefulset
+spec:
+  serviceName: "virtual-topic-subscriber"
+  replicas: 3  # Set the number of replicas to 3 for three unique subscribers
+  selector:
+    matchLabels:
+      app: virtual-topic-subscriber
+  template:
+    metadata:
+      labels:
+        app: virtual-topic-subscriber
+    spec:
+      containers:
+        - name: virtual-topic-subscriber
+          image: virtual-topic-subscriber-app
+          imagePullPolicy: Never # use the local image
+          env:
+            - name: BROKER_URL
+              value: tcp://activemq-service:61616
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          command: ["java", "-cp", "/app/messaging_in_java-0.0.1-SNAPSHOT.jar:/app/libs/*", "com.ljx213101212.messaging_in_java.task3.VirtualTopicSubscriber", "$(POD_NAME)"]
+  volumeClaimTemplates:
+    - metadata:
+        name: app-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: virtual-topic-subscriber
+spec:
+  ports:
+    - port: 80
+      name: http
+  clusterIP: None
+  selector:
+    app: virtual-topic-subscriber
