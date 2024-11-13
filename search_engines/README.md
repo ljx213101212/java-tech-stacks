@@ -8,7 +8,7 @@
 
 #### Task1
 
-use org.springframework.data.elasticsearch.repository.ElasticsearchRepository
+use org.springframework.data.elasticsearch.com.ljx213101212.flyway.repository.ElasticsearchRepository
 ```
 POST /api/v1/book/index
 Index Sample books into elastic search

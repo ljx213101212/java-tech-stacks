@@ -17,10 +17,10 @@
 <!--                <activeByDefault>true</activeByDefault>-->
 <!--            </activation>-->
 <!--            <repositories>-->
-<!--                <repository>-->
+<!--                <com.ljx213101212.flyway.repository>-->
 <!--                    <id>epam-aws-code-artifact-hello-world</id>-->
 <!--                    <url>${env.CODEARTIFACT_REPOSITORY_URL}</url>-->
-<!--                </repository>-->
+<!--                </com.ljx213101212.flyway.repository>-->
 <!--            </repositories>-->
 <!--        </profile>-->
 <!--    </profiles>-->

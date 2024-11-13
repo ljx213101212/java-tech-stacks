@@ -20,7 +20,7 @@ Kubernetes
 ##### 2. Create "docker-compose.yml", with the following configuration:
 - "micro-sender" should be in "sender" network
 - "micro-recipient" should be in "recipient" network
-- "rabbitmq" (you can find it into the docker-repository). This service should be in "sender" and "recipient" networks
+- "rabbitmq" (you can find it into the docker-com.ljx213101212.flyway.repository). This service should be in "sender" and "recipient" networks
 - "micro-collector" should be in "recipient"
 - Ports configuration
 ##### 3. The "micro-sender" must be configured with the following requirements:

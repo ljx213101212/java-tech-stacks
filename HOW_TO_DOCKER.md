@@ -49,7 +49,7 @@ sudo apt-get install -y \
 ```commandline
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
-- Set up the Docker stable repository:
+- Set up the Docker stable com.ljx213101212.flyway.repository:
 ```commandline
 
 echo \

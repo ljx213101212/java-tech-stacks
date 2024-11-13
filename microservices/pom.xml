@@ -13,7 +13,7 @@
 <!--        <groupId>org.springframework.boot</groupId>-->
 <!--        <artifactId>spring-boot-starter-parent</artifactId>-->
 <!--        <version>3.3.5</version>-->
-<!--        <relativePath/> &lt;!&ndash; lookup parent from repository &ndash;&gt;-->
+<!--        <relativePath/> &lt;!&ndash; lookup parent from com.ljx213101212.flyway.repository &ndash;&gt;-->
 <!--    </parent>-->
 
 <!--    <properties>-->

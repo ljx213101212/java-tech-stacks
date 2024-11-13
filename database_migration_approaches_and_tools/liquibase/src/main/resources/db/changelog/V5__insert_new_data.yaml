@@ -1,0 +1,108 @@
+databaseChangeLog:
+  - changeSet:
+      id: "1"
+      author: "jixiang_li"
+      changes:
+        - insert:
+            tableName: "country"
+            columns:
+              - column:
+                  name: "country_code"
+                  value: "IN"
+        - insert:
+            tableName: "country"
+            columns:
+              - column:
+                  name: "country_code"
+                  value: "JP"
+        - insert:
+            tableName: "country"
+            columns:
+              - column:
+                  name: "country_code"
+                  value: "CA"
+        - insert:
+            tableName: "country"
+            columns:
+              - column:
+                  name: "country_code"
+                  value: "GB"
+      rollback:
+        - delete:
+            tableName: "country"
+            where: "country_code = 'IN'"
+        - delete:
+            tableName: "country"
+            where: "country_code = 'JP'"
+        - delete:
+            tableName: "country"
+            where: "country_code = 'CA'"
+        - delete:
+            tableName: "country"
+            where: "country_code = 'GB'"
+
+  - changeSet:
+      id: "2"
+      author: "jixiang_li"
+      changes:
+        - insert:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "company_name"
+                  value: "EcoWare"
+              - column:
+                  name: "country_code"
+                  value: "IN"
+              - column:
+                  name: "industry"
+                  value: "Environmental Solutions"
+        - insert:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "company_name"
+                  value: "NexGenTech"
+              - column:
+                  name: "country_code"
+                  value: "JP"
+              - column:
+                  name: "industry"
+                  value: "Technology Solutions"
+        - insert:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "company_name"
+                  value: "MapleCorp"
+              - column:
+                  name: "country_code"
+                  value: "CA"
+              - column:
+                  name: "industry"
+                  value: "Consulting"
+        - insert:
+            tableName: "company"
+            columns:
+              - column:
+                  name: "company_name"
+                  value: "BritIndust"
+              - column:
+                  name: "country_code"
+                  value: "GB"
+              - column:
+                  name: "industry"
+                  value: "Manufacturing"
+      rollback:
+        - delete:
+            tableName: "company"
+            where: "company_name = 'EcoWare' AND country_code = 'IN'"
+        - delete:
+            tableName: "company"
+            where: "company_name = 'NexGenTech' AND country_code = 'JP'"
+        - delete:
+            tableName: "company"
+            where: "company_name = 'MapleCorp' AND country_code = 'CA'"
+        - delete:
+            tableName: "company"
+            where: "company_name = 'BritIndust' AND country_code = 'GB'"
