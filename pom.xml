@@ -33,5 +33,6 @@
 		<module>microservices</module>
 		<module>database_migration_approaches_and_tools</module>
 		<module>messaging_in_java</module>
+		<module>concurrency_and_multithreading</module>
 	</modules>
 </project>
