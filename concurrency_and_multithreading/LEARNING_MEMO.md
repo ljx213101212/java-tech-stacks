@@ -4,7 +4,7 @@
 - Fail-Fast Behavior: Iterator checks modCount , if it has changed,  iterator throws ConcurrentModificationException
 
 
-### HashMap vs synchronizedMap vs ConcurrentHashMap
+### HashMap vs SynchronizedMap vs ConcurrentHashMap
 
 - HashMap:  NOT thread-safe,  Fail-Fast
 - SynchronizedMap:  thread-safe,  Fail-Fast
@@ -20,3 +20,22 @@ By adding Thread.sleep(50) in indefinite loop will reduce starvation risk
 
 ### adding "synchronized" modifier 
 - To make the function scope thread-safe
+
+### spurious wakeups
+https://en.wikipedia.org/wiki/Spurious_wakeup
+- It could be caused by the JVM or operating system signaling the waiting thread accidentally.
+- Solution: always check the condition in a while loop, not an if statement.
+
+### notify() vs signal()
+- notify()
+  - synchronized keyword and intrinsic locks ("monitor" lock).
+  - eg.wait()
+  - lacks fine-grained control, notify only one thread
+  - ease of use, but not for complex scenario
+- signal()
+  - explicit locks (ReentrantLock and Condition objects)
+  - eg. lock.lock()
+  - better control , multiple conditions
+  - complex to use and easy to make mistakes, but provide flexibility
+
+
