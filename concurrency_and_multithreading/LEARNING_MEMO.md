@@ -6,14 +6,17 @@
 
 ### HashMap vs synchronizedMap vs ConcurrentHashMap
 
-HashMap:  NOT thread-safe,  Fail-Fast
-SynchronizedMap:  thread-safe,  Fail-Fast
-ConcurrentHashMap:  thread-safe,  Fail-Safe
+- HashMap:  NOT thread-safe,  Fail-Fast
+- SynchronizedMap:  thread-safe,  Fail-Fast
+- ConcurrentHashMap:  thread-safe,  Fail-Safe
 
-#### when to Use SynchronizedMap
+#### When to Use SynchronizedMap
 - Simple Synchronization Needs: If your synchronization needs are simple and the performance impact is negligible, synchronizedMap might be sufficient.
 - Legacy Systems: When working within legacy codebases that already use synchronizedMap, and the cost of refactoring is high.
 - Controlled Access Patterns: In situations where you can guarantee that modifications won't occur during iteration, or you can effectively manage synchronization externally.
 
 ### Starvation
 By adding Thread.sleep(50) in indefinite loop will reduce starvation risk
+
+### adding "synchronized" modifier 
+- To make the function scope thread-safe
