@@ -14,6 +14,14 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.34</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
     <build>
         <plugins>
             <plugin>
@@ -23,7 +31,11 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.ljx213101212.concurrency_and_multithreading.DasExperiment</mainClass>
+                            <mainClass>com.ljx213101212.concurrency_and_multithreading.task1.DasExperiment</mainClass>
+                            <mainClass>com.ljx213101212.concurrency_and_multithreading.task2.DeadlockExample</mainClass>
+                            <mainClass>com.ljx213101212.concurrency_and_multithreading.task3.AsynchronousMessageBusExample</mainClass>
+                            <mainClass>com.ljx213101212.concurrency_and_multithreading.task4.BlockObjectPoolExample</mainClass>
+                            <mainClass>com.ljx213101212.concurrency_and_multithreading.task5.CurrencyExchangeApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
