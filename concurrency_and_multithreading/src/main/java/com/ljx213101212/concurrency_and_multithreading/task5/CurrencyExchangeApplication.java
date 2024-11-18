@@ -16,6 +16,7 @@ public class CurrencyExchangeApplication {
 
     public static void main(String[] args) {
 
+        //Thread pool usage: reuse threads by reducing the overhead of constantly creating and destroying threads.
         ExecutorService executor = Executors.newFixedThreadPool(5);
         ExchangeService exchangeService = new ExchangeService();
         CommandController commandController = new CommandController();
