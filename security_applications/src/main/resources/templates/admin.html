@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Page</title>
+</head>
+<body>
+<div th:insert="~{fragments :: header}"></div>
+<h1>This is Admin Page, only admin@example.com can see.</h1>
+<a th:href="@{/blocked-list}">View Blocked Users</a>
+</body>
+</html>

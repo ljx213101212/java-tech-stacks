@@ -34,5 +34,6 @@
 		<module>database_migration_approaches_and_tools</module>
 		<module>messaging_in_java</module>
 		<module>concurrency_and_multithreading</module>
+		<module>security_applications</module>
 	</modules>
 </project>

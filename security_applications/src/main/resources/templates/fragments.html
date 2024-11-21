@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<body>
+<!-- Define a fragment named 'header' -->
+<div th:fragment="header">
+    <div sec:authorize="isAuthenticated()">
+        <p>Welcome, <span sec:authentication="name">User Email</span>!</p>
+
+        <!-- Why use methd POST? -->
+        <!--in CsrfFilter.java, the allowedMethods typically include safe HTTP methods like "GET", "HEAD", "TRACE", and sometimes "OPTIONS", but "POST" is not included.
+            This design choice in Spring Security enforces that "POST" requests are subject to CSRF protection-->
+        <!--Logout Is a State-Changing Operation, thats why -->
+        <form th:action="@{/logout}" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
