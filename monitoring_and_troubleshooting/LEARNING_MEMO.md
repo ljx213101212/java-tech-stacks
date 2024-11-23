@@ -36,3 +36,18 @@ logger.trace(LogMessage.format("Invoking %s (%d/%d)", name, this.currentPosition
 2024-11-21T12:16:50.453+08:00 TRACE 14660 --- [nio-8080-exec-7] o.s.security.web.FilterChainProxy        : Invoking CsrfFilter (6/14)
 
 ```
+
+### Add logback.xml in resources folder to display specific java file to locate the line number
+
+```commandline
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%file:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
+```

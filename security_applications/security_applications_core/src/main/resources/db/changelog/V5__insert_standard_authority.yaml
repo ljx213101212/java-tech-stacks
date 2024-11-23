@@ -1,0 +1,39 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: jixiang_li
+      changes:
+        - insert:
+            tableName: authorities
+            columns:
+              - column:
+                  name: authority
+                  value: "STANDARD"
+        - insert:
+            tableName: user_authorities
+            columns:
+              - column:
+                  name: user_id
+                  value: 1
+              - column:
+                  name: authority_id
+                  valueComputed: "(SELECT id FROM authorities WHERE authority = 'STANDARD')"
+        - insert:
+            tableName: user_authorities
+            columns:
+              - column:
+                  name: user_id
+                  value: 2
+              - column:
+                  name: authority_id
+                  valueComputed: "(SELECT id FROM authorities WHERE authority = 'STANDARD')"
+      rollback:
+        - delete:
+            tableName: user_authorities
+            where: "user_id=1 AND authority_id=(SELECT id FROM authorities WHERE authority = 'STANDARD')"
+        - delete:
+            tableName: user_authorities
+            where: "user_id=2 AND authority_id=(SELECT id FROM authorities WHERE authority = 'STANDARD')"
+        - delete:
+            tableName: authorities
+            where: "authority='STANDARD'"

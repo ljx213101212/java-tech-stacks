@@ -41,6 +41,7 @@ It provides flexibility by allowing you to retrieve users from a database, an LD
 https://developers.google.com/oauthplayground/
 
 ### JWT
+try it on https://jwt.io/
 - 3 sections
     1. header
        - algorithm been used 
@@ -75,6 +76,38 @@ nowadays project are frontend and backend separate.
 ### Practicing troubleshooting skill through library source is important!
 [HOW_TO_DEBUG_DEPENDENCY](../monitoring_and_troubleshooting/LEARNING_MEMO.md)
 
+### Quick Command to kill dangling Java program (sometimes spring mvc doesn't stop)
+```commandline
+for /f "tokens=2" %i in ('tasklist ^| findstr java.exe') do taskkill /PID %i /F
+```
+#### No they are actually intellij's plugins... not spring mvc
+```commandline
+C:\Users\Jixiang_Li>jps -l
+26272 c:\Users\Jixiang_Li\.vscode\extensions\sonarsource.sonarlint-vscode-4.12.0-win32-x64\server\sonarlint-ls.jar
+33664 org.jetbrains.jps.cmdline.Launcher
+5748 jdk.jcmd/sun.tools.jps.Jps
+32392 c:\Users\Jixiang_Li\.vscode\extensions\redhat.java-1.36.0-win32-x64\server\plugins\org.eclipse.equinox.launcher_1.6.900.v20240613-2009.jar
+32696 c:\Users\Jixiang_Li\.vscode\extensions\sonarsource.sonarlint-vscode-4.12.0-win32-x64\server\sonarlint-ls.jar
+32776 com.ljx213101212.secret_provider.SecretProviderApplication
+2620
+```
+### Add logback.xml in resources folder to display specific java file to locate the line number
+
+```commandline
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} [%file:%line] - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+    </root>
+</configuration>
+```
+
+
+
 
 ## Reference
 
@@ -84,4 +117,7 @@ https://github.com/Baeldung/spring-security-registration/blob/master/src/main/ja
 
 spring source
 https://github.com/spring-projects/spring-security/blob/main/web/src/main/java/org/springframework/security/web/authentication/AuthenticationFilter.java
+
+scenario
+https://onetimesecret.com/
 
