@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ensure the content is vertically centered */
+}
+
+.container {
+    width: 320px; /* Adjusted for a bit more space */
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px; /* Added margin for spacing between heading and form */
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Ensure consistent spacing between form elements */
+}
+
+label {
+    margin-bottom: 4px; /* Slightly reduced margin for better alignment */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px; /* Adjusted for consistent padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Prevents input from exceeding its container */
+}
+
+button {
+    padding: 12px; /* Slightly increased padding for better button appearance */
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold; /* Makes button text more prominent */
+    text-transform: uppercase; /* Optional: makes the button label more readable */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+p {
+    text-align: center; /* Align error or logout messages to center */
+    margin-top: 10px; /* Add margin for spacing from form elements */
+    font-size: 0.9em;
+}

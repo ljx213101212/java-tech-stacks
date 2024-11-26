@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: jixiang_li
+      changes:
+        - createTable:
+            tableName: secrets
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: token
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+      rollback:
+        - dropTable:
+            tableName: secrets

@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: jixiang_li
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: "user@example.com"
+              - column:
+                  name: password
+                  value: "$2a$12$8psvSgCS3QR8Oygh6ZPsvOul/Yhm3JjoEFp9q8k29da6zsNdiaTou" #123456
+      rollback:
+        - delete:
+            tableName: users
+            where: "email='user@example.com'"
+
+  - changeSet:
+      id: 2
+      author: jixiang_li
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: "admin@example.com"
+              - column:
+                  name: password
+                  value: "$2a$12$mT4nGnRvaD.EKWc/VS50BOhmQe.Ku.karmiKm6wjwSuxjCnHtOvPm"
+      rollback:
+        - delete:
+            tableName: users
+            where: "email='admin@example.com'"

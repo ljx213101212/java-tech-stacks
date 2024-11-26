@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: jixiang_li
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: account_non_locked
+                  type: BOOLEAN
+                  defaultValueBoolean: true
+              - column:
+                  name: failed_attempt
+                  type: INT
+                  defaultValueNumeric: 0
+              - column:
+                  name: lock_time
+                  type: TIMESTAMP
+      rollback:
+        - dropColumn:
+            tableName: users
+            columnName: account_non_locked
+        - dropColumn:
+            tableName: users
+            columnName: failed_attempt
+        - dropColumn:
+            tableName: users
+            columnName: lock_time

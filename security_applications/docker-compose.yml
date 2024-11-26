@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  mysql:
+    image: mysql:8.1
+    container_name: local-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: security_applications_demo
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    ports:
+      - "6603:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  security-core:
+    build: ./security_applications_core
+    container_name: security-core
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  secret-provider:
+    build: ./secret_provider
+    container_name: secret-provider
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
+    driver: local
